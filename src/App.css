@@ -1,0 +1,442 @@
+.navbar {
+    width: 100%;
+    background: #7E33E0;
+    color: white;
+    font-family: Josefin Sans;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.navbar_main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.navbar_left {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navbar_right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.til {
+    background: none;
+    padding: 6px 8px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.davlat {
+    background: none;
+    padding: 6px 8px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+header {
+    empty-cells: 100%;
+}
+
+.nav {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav_h1 {
+    font-family: Josefin Sans;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 34px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #0D0E43;
+}
+
+
+.nav_right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav_right a {
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #0D0E43;
+    text-decoration: none;
+}
+
+.nav_ohir input {
+    padding: 8px 4px;
+    border: 2px solid gray;
+    border-radius: 4px;
+}
+
+.nav_ohir button {
+    padding: 9px 15px;
+    border: none;
+    border-radius: 4px;
+    background: #FB2E86;
+    color: white;
+}
+
+/* BANNER */
+
+.banner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.banner_left {
+    margin-bottom: 250px;
+}
+
+.banner_center h3 {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #FB2E86;
+}
+
+.banner_center h1 {
+    font-family: Josefin Sans;
+    font-size: 47px;
+    line-height: 75px;
+    letter-spacing: 0.015em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.banner_center p {
+    width: 85%;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #8A8FB9;
+}
+
+.banner_center button {
+    padding: 8px 10px;
+    font-size: 16px;
+    border: none;
+    background: #FB2E86;
+    color: white;
+    border-radius: 4px;
+}
+
+
+/* SHOP */
+
+.shop {
+    width: 100%;
+}
+
+.shop_main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.shop_title {
+    margin: 5% 0;
+}
+
+.title_h1 {
+    font-family: Josefin Sans;
+    font-size: 36px;
+    line-height: 42.19px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #101750;
+}
+
+.shop_title a {
+    font-family: Lato;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 19.2px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-decoration: none;
+    color: #000000;
+    margin-left: 10px;
+}
+
+.title_span {
+    margin-left: 20px;
+    font-family: Lato;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 19.2px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #FB2E86;
+}
+
+.glavniy_main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.glavniy_right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.glavniy_left h1 {
+    font-family: Josefin Sans;
+    font-size: 22px;
+    line-height: 25.78px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #151875;
+}
+
+.glavniy_left p {
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.4px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #8A8FB9;
+}
+
+.davlat1 {
+    background-color: rgb(236, 234, 234);
+    padding: 6px 6px;
+    border-radius: 4px;
+}
+
+.glavniy_right p {
+    font-family: Lato;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 19.2px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #3F509E;
+}
+
+.glavniy_right input {
+    padding: 8px 8px;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.shop_card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 3fr);
+    justify-content: space-between;
+    margin: 20px auto;
+    margin-left: 20px;
+}
+
+.shop_card_main {
+    width: 90%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.card_cost {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.shop_card_main h2 {
+    font-family: Josefin Sans;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.shop_card_main p {
+    font-family: Josefin Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 14px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #151875;
+}
+
+.shop_card_main del {
+    font-family: Josefin Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 14px;
+    text-align: center;
+    text-decoration-line: line-through;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #FB2E86;
+}
+
+
+
+
+
+
+/* Footer */
+
+footer {
+    margin: 30px 0;
+    width: 100%;
+}
+
+.footer_main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.footer1 h1 {
+    font-family: Josefin Sans;
+    font-size: 38px;
+    line-height: 44.53px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+.footer1 input {
+    padding: 8px 8px;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.footer1 button {
+    padding: 10px 15px;
+    margin: 20px 0;
+    border: none;
+    background: #FB2E86;
+    color: white;
+    border-radius: 4px;
+}
+
+.footer1 p {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #8A8FB9;
+}
+
+.footer2 h2 {
+    font-family: Josefin Sans;
+    font-size: 22px;
+    line-height: 25.78px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.footer2 p {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #8A8FB9;
+}
+
+.footer_pas {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+    background: #E7E4F8;
+}
+
+.pas_left p {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.2px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #9DA0AE;
+    font-size: 18px;
+}
+.pas_right{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+}
+.search_h1{
+    width: 100%;
+    text-align: center;
+    color: red;
+}
+.shop_ohir{
+    width: 70%;
+    margin: 0 auto;
+}
+.shop_icon_img{
+    display: flex;
+    align-items: end;
+}
+.shop_icon{
+    display: flex;
+    flex-direction: column;
+}
