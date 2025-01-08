@@ -5,7 +5,9 @@ import { AiOutlineBars } from "react-icons/ai";
 import { FaShoppingCart, FaHeart, FaSearchPlus } from "react-icons/fa";
 import Ohir1 from "../assets/15.png";
 
-function Shop({ cards, headleAdd }) {
+import { cards } from "../Malumotlar"; // Import qilish
+
+function Shop1({ headleAdd }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [likedCards, setLikedCards] = useState([]);
   const [filter, setFilter] = useState("all");
@@ -66,12 +68,9 @@ function Shop({ cards, headleAdd }) {
             <p>
               View:
               <NavLink to="/shop">
-              <FaBarsProgress />
-
+                <FaBarsProgress />
               </NavLink>
-              <NavLink to="/shop1">
-                <AiOutlineBars />
-              </NavLink>
+              <AiOutlineBars />
             </p>
             <input
               type="search"
@@ -84,40 +83,49 @@ function Shop({ cards, headleAdd }) {
 
         <Outlet />
 
-        <div className="shop_card">
+        <div className="shop_card1">
           {searchTerm && filteredCards.length === 0 ? (
             <div>
               <h1>Siz qidirgan malumot yo'q!!!</h1>
             </div>
           ) : (
             filteredCards.map((item) => (
-              <div key={item.id} className="shop_card_main">
-                <img src={item.img} alt="" className="cardDivImg" />
-                <div className="shop_icon">
+              <div key={item.id} className="shop_card_main1">
+                <img src={item.img} alt="" className="cardDivImg1" />
+
+                <div className="card_cost1">
                   <div>
-                    <FaShoppingCart onClick={() => headleAdd(item)} />
+                    <h2>{item.title}</h2>
+                    <div className="card_cost2">
+                      <p>${item.cost}.00</p>
+                      <del>${item.cost1}.00</del>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Magna in est adipiscing in phasellus non in justo.
+                      </p>
+                    </div>
+                    <div className="shop_icon1">
+                      <div>
+                        <FaShoppingCart onClick={() => headleAdd(item)} />
+                      </div>
+                      <div
+                        onClick={() => handleHeartClick(item.id)}
+                        style={{
+                          cursor: "pointer",
+                          color: likedCards.includes(item.id) ? "red" : "black",
+                          fontSize: "24px",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                      >
+                        <FaHeart />
+                      </div>
+                      <div>
+                        <NavLink to="/informations">
+                          <FaSearchPlus />
+                        </NavLink>
+                      </div>
+                    </div>
                   </div>
-                  <div
-                    onClick={() => handleHeartClick(item.id)}
-                    style={{
-                      cursor: "pointer",
-                      color: likedCards.includes(item.id) ? "red" : "black",
-                      fontSize: "24px",
-                      transition: "color 0.3s ease-in-out",
-                    }}
-                  >
-                    <FaHeart />
-                  </div>
-                  <div>
-                    <NavLink to="/informations">
-                      <FaSearchPlus />
-                    </NavLink>
-                  </div>
-                </div>
-                <h2>{item.title}</h2>
-                <div className="card_cost">
-                  <p>${item.cost}.00</p>
-                  <del>${item.cost1}.00</del>
                 </div>
               </div>
             ))
@@ -132,4 +140,4 @@ function Shop({ cards, headleAdd }) {
   );
 }
 
-export default Shop;
+export default Shop1;

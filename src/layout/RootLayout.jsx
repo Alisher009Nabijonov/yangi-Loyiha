@@ -4,6 +4,8 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
+import { Toaster } from 'react-hot-toast';
 
 function RootLayout() {
     return (
@@ -15,13 +17,21 @@ function RootLayout() {
                         <h1 className='nav_h1'>Hekto</h1>
                     </div>
                     <div className='nav_right'>
+                        <div className="li">
 
-                        <NavLink to="/">Home</NavLink>
+                            <NavLink to="/">Home</NavLink>
+                            <div className="dropdown">
+                                <NavLink to="/faq" >Faq</NavLink>
+                                <NavLink to="/about" >About</NavLink>
+                                <NavLink to="/cantactus" >Contact Us</NavLink>
+                            </div>
+                        </div>
                         <NavLink to="/pages">Pages</NavLink>
                         <NavLink to="/products">Products</NavLink>
                         <NavLink to="/blog">Blog</NavLink>
                         <NavLink to="/shop">Shop</NavLink>
                         <NavLink to="/contact">Contact</NavLink>
+                        <NavLink to="/shoping"><FaShoppingCart /></NavLink>
                     </div>
                     <div className='nav_ohir'>
                         <input type="search" placeholder='Search...' />
@@ -31,6 +41,7 @@ function RootLayout() {
                 </nav>
             </header>
             <main>
+                <Toaster />
                 <Outlet />
             </main>
             <footer>
