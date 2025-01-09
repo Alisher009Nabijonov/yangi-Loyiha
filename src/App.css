@@ -701,7 +701,7 @@ footer {
 }
 
 .nav_right a.active {
-  background: #7E33E0;
+  background: #7e33e0;
   color: white;
   padding: 6px 6px;
   border-radius: 4px;
@@ -1797,4 +1797,51 @@ button {
   }
 }
 
+.information {
+  width: 80%;
+  min-height: 80vh;
+  background-color: red;
+  margin: 0 auto;
+  display: flex;
+}
 
+.information-right {
+  width: 50%;
+  height: 80vh;
+  background-color: rgb(207, 207, 207);
+}
+.information-left {
+  width: 50%;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Left column for small images, right column for the large image */
+  gap: 10px; /* Space between images */
+  width: 100%; /* Full-width layout */
+}
+
+.thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Optional rounded corners */
+  object-fit: cover; /* Ensure images fit nicely */
+}
+
+.main-image {
+  grid-row: 1 / span 3; /* Make the main image span 3 rows */
+  grid-column: 2; /* Position it in the right column */
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
