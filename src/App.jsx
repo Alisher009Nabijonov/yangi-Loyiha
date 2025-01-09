@@ -25,11 +25,15 @@ import Navbar from './layout/Navbar'
 import About from './Pages/About'
 import CantactUs from './Pages/CantactUs'
 import Shop1 from './Pages/Shop1'
+import Login from './Pages/Login'
 
 import RootLayout from './layout/RootLayout'
 import { useState } from 'react'
 
+
 function App() {
+ 
+  
 
   const [shop, setShop] = useState([]);
 
@@ -55,17 +59,18 @@ function App() {
     createRoutesFromElements(
       <Route path='/' element={<RootLayout />}>
         <Route index element={<Home />} />
-        <Route path='pages' element={<Pages />} />
+        <Route path='pages' element={<Pages />} totalCost={totalCost} totalCost1={totalCost1}/>
         <Route path='products' element={<Products />} />
         <Route path='blog' element={<Blog  />} />
         <Route path='shop' element={<Shop cards={cards} headleAdd={headleAdd}/>} />
         <Route path='contact' element={<Contact />} />
         <Route path='shoping' element={<Shoping shop={shop} totalCost={totalCost} totalCost1={totalCost1}/>} />
-        <Route path='informations' element={<Informations />} />
+        <Route path='informations/:id' element={<Informations />} />
         <Route path='faq' element={<Faq/>} />
         <Route path='about' element={<About/>} />
         <Route path='cantactus' element={<CantactUs/>}/>
         <Route path='shop1' element={<Shop1/>}/>
+        <Route path='login'  element={<Login/>} />
       </Route>
     )
   )

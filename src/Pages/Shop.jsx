@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBarsProgress } from "react-icons/fa6";
-import { AiOutlineBars } from "react-icons/ai";
 import { FaShoppingCart, FaHeart, FaSearchPlus } from "react-icons/fa";
+import { AiOutlineBars } from "react-icons/ai";
+import { FaBarsProgress } from "react-icons/fa6";
 import Ohir1 from "../assets/15.png";
 
-function Shop({ cards, headleAdd }) {
+function Shop({cards, headleAdd }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm1, setSearchTerm1] = useState("");  
   const [likedCards, setLikedCards] = useState([]);
   const [filter, setFilter] = useState("all");
 
@@ -21,10 +22,22 @@ function Shop({ cards, headleAdd }) {
     setSearchTerm(term);
   };
 
+  const handleSearch1 = (event) => {
+    const term1 = event.target.value;
+    setSearchTerm1(term1);
+  };
+
   const getFilteredCards = () => {
     let filteredCards = cards.filter((card) =>
       card.title.toLowerCase().includes(searchTerm)
     );
+
+
+    if (searchTerm1) {
+      filteredCards = filteredCards.filter((card) =>
+        card.id.toString().includes(searchTerm1)
+      );
+    }
 
     if (filter === "a-z") {
       return filteredCards.slice(0, 6);
@@ -48,11 +61,20 @@ function Shop({ cards, headleAdd }) {
 
         <div className="glavniy_main">
           <div className="glavniy_left">
-            <h1>Ecommerce Accessories & Fashion item</h1>
+            <h1>Ecommerce Accessories & Fashion items</h1>
             <p>About {filteredCards.length} results found</p>
           </div>
           <div className="glavniy_right">
-            <p>Per Page:</p>
+            <p>
+              Per Page: 
+              <input
+                type="search"
+                value={searchTerm1}
+                onChange={handleSearch1}
+                placeholder="Search
+                 ID"
+              />
+            </p>
             <p>Sort By:</p>
             <select
               name="sort"
@@ -66,8 +88,7 @@ function Shop({ cards, headleAdd }) {
             <p>
               View:
               <NavLink to="/shop">
-              <FaBarsProgress />
-
+                <FaBarsProgress />
               </NavLink>
               <NavLink to="/shop1">
                 <AiOutlineBars />
@@ -87,12 +108,12 @@ function Shop({ cards, headleAdd }) {
         <div className="shop_card">
           {searchTerm && filteredCards.length === 0 ? (
             <div>
-              <h1>Siz qidirgan malumot yo'q!!!</h1>
+              <h1>No results found for your search!</h1>
             </div>
           ) : (
             filteredCards.map((item) => (
               <div key={item.id} className="shop_card_main">
-                <img src={item.img} alt="" className="cardDivImg" />
+                <img src={item.img} alt={item.title} className="cardDivImg" />
                 <div className="shop_icon">
                   <div>
                     <FaShoppingCart onClick={() => headleAdd(item)} />
@@ -109,7 +130,7 @@ function Shop({ cards, headleAdd }) {
                     <FaHeart />
                   </div>
                   <div>
-                    <NavLink to="/informations">
+                    <NavLink to={`/informations/${item.id}`}>
                       <FaSearchPlus />
                     </NavLink>
                   </div>
@@ -125,7 +146,7 @@ function Shop({ cards, headleAdd }) {
         </div>
 
         <div className="shop_ohir">
-          <img src={Ohir1} alt="" />
+          <img src={Ohir1} alt="Footer" />
         </div>
       </div>
     </div>

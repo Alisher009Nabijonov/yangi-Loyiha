@@ -1,71 +1,63 @@
-import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom';
+import React from "react";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { IoIosStar } from "react-icons/io";
 import { FaHeart } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 
-import Dalniy1 from '../assets/16.png'
-import Dalniy2 from '../assets/17.png'
-import Dalniy3 from '../assets/18.png'
-import Dalniy4 from '../assets/19.png'
 
-const informations = ({ cards }) => {
-    return (
-        <div className='information'>
-            <div className="information_main">
-                <div className='shop_title'>
-                    <h1 className='title_h1'>Product Details</h1>
-                    <NavLink to="/">home.</NavLink>
-                    <NavLink to="/pages">Pages.</NavLink>
-                    <span className='title_span'>Product Details</span>
-                </div>
-                <div className="catd_dalniy">
-                    <div className='dalniy0'>
-                        <div className="dalniy1">
-                            <img src={Dalniy1} alt="" />
-                            <img src={Dalniy2} alt="" />
-                            <img src={Dalniy3} alt="" />
-                        </div>
-                        <div className="dalniy2">
-                            <img src={Dalniy4} alt="" />
-                        </div>
-                    </div>
-                    <div className="dalniy3">
-                        <h1>Playwood arm chair</h1>
-                        <div className='dalniy_icon'>
-                            <i><IoIosStar />
-                            <IoIosStar />
-                            <IoIosStar />
-                            <IoIosStar />
-                            <IoIosStar /></i>
-                            <p>(22)</p>
-                        </div>
-                        <div className="dalniy_cost">
-                            <p>$32.00</p>
-                            <del>$32.00</del>
-                        </div>
-                        <h2>color</h2>
 
-                        <p className='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.</p>
-                        <button>Add To cart <i className='heart'><FaHeart /></i></button>
-                        <h2>Categories:</h2>
-                        <h2>Tags</h2>
-                        <div className='dalniy_share'>
+import { cards } from "../Malumotlar";
 
-                            <h2>Share:</h2>
-                            <FaFacebookF />
-                            <FaInstagram />
-                            <FaTwitter />
-                        </div>
-                    </div>
 
-                </div>
-                <Outlet />
+const informations = () => {
+  const { id } = useParams();
+
+  const product = cards.find((pro) => pro.id == id);
+
+  if (!product) {
+    return <p>object not faund</p>;
+  }
+  return (
+    <div className="product-card">
+      <div className="images-section">
+      {product.Imgs.map((item, id) =>(
+            <div className="thumbnail" key={id}>
+                <img src={item} alt={item} />
             </div>
+        ))}
+      </div>
+      <div className="main-section">
+        <h2>Playwood arm chair</h2>
+        <div className="rating">
+          <span>⭐⭐⭐⭐⭐</span> <span className="review-count">(22)</span>
         </div>
-    )
-}
+        <div className="price">
+          <span className="current-price">$32.00</span>
+          <span className="old-price">$39.00</span>
+        </div>
+        <div className="color">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.</p>
+        </div>
+        <button className="add-to-cart">Add To Cart</button>
+        <div className="categories">
+          <p><strong>Categories:</strong></p>
+        </div>
+        <div className="tags">
+          <p><strong>Tags:</strong></p>
+        </div>
+        <div className="share">
+          <p><strong>Share:</strong></p>
+          <div className="icons">
+            <span>🔵</span>
+            <span>🟣</span>
+            <span>🟡</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default informations
+export default informations;

@@ -5,7 +5,7 @@ import { AiOutlineBars } from "react-icons/ai";
 import { FaShoppingCart, FaHeart, FaSearchPlus } from "react-icons/fa";
 import Ohir1 from "../assets/15.png";
 
-import { cards } from "../Malumotlar"; // Import qilish
+import { cards } from "../Malumotlar"; 
 
 function Shop1({ headleAdd }) {
   const [searchTerm, setSearchTerm] = useState("");

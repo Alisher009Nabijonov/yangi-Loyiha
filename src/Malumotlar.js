@@ -10,9 +10,14 @@
   import Kamera1 from './assets/13.png';
   import Quloqchin2 from './assets/14.png';
 
+  import Stol1 from './assets/stol1.jpg'
+  import Stol2 from './assets/stol2.jpg'
+  import Stol3 from './assets/stol3.jpg'
+
+
 
   export const cards = [
-      { id: 1, img: Kreslo1, title: "Vel elit euismod", cost: 26.00, cost1: 42.00 },
+      { id: 1, img: Kreslo1, title: "Vel elit euismod", cost: 26.00, cost1: 42.00, Imgs:[ Kreslo1, Stol1, Stol2, Stol3] },
       { id: 2, img: Kreslo2, title: "Ultricies condimentum imperdiet", cost: 26.00, cost1: 42.00 },
       { id: 3, img: Kreslo3, title: "Vitae suspendisse sed", cost: 26.00, cost1: 42.00 },
       { id: 4, img: Sumka1, title: "Sed at fermentum", cost: 26.00, cost1: 42.00 },

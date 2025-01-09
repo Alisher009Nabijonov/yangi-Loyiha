@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { MdEmail } from "react-icons/md";
 import { BsFillTelephonePlusFill } from "react-icons/bs";
-import { FaUser } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+
 
 
 const Navbar = () => {
@@ -25,7 +25,7 @@ const Navbar = () => {
                         <option value="USD1">USD1</option>
                         <option value="English1">English1</option>
                     </select>
-                    <p>Login<FaUser /></p>
+
                     <p>Wishlist<FaHeart /></p>
                    
                 </div>

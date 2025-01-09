@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import HomeImg from '../assets/1.png'
 import HomeImg1 from '../assets/2.png'
 import { Pagination } from 'swiper/modules';
 
@@ -26,9 +25,7 @@ export default function App() {
       >
         <SwiperSlide>
           <div className="banner">
-            <div className="banner_left">
-              <img src={HomeImg} alt="HOMEIMG" />
-            </div>
+           
             <div className="banner_center">
               <h3>Best Furniture For Your Castle....</h3>
               <h1>New Furniture Collection
@@ -44,9 +41,7 @@ export default function App() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="banner">
-            <div className="banner_left">
-              <img src={HomeImg} alt="HOMEIMG" />
-            </div>
+          
             <div className="banner_center">
               <h3>Best Furniture For Your Castle....</h3>
               <h1>New Furniture Collection
@@ -62,9 +57,7 @@ export default function App() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="banner">
-            <div className="banner_left">
-              <img src={HomeImg} alt="HOMEIMG" />
-            </div>
+      
             <div className="banner_center">
               <h3>Best Furniture For Your Castle....</h3>
               <h1>New Furniture Collection
