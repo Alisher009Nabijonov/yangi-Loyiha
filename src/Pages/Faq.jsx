@@ -57,7 +57,7 @@ const Faq = () => {
         <div className='faq'>
             <div className="faq_main">
                 <Toaster />
-                <div className='shop_title'>
+                <div className='faq_title'>
                     <h1 className='title_h1'>FAQ</h1>
                     <NavLink to="/">home.</NavLink>
                     <NavLink to="/pages">Pages.</NavLink>

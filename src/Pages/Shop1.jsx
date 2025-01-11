@@ -4,11 +4,13 @@ import { FaBarsProgress } from "react-icons/fa6";
 import { AiOutlineBars } from "react-icons/ai";
 import { FaShoppingCart, FaHeart, FaSearchPlus } from "react-icons/fa";
 import Ohir1 from "../assets/15.png";
+import { CgMenuGridO } from "react-icons/cg";
 
-import { cards } from "../Malumotlar"; 
+import { cards } from "../Malumotlar";
 
 function Shop1({ headleAdd }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm1, setSearchTerm1] = useState("");
   const [likedCards, setLikedCards] = useState([]);
   const [filter, setFilter] = useState("all");
 
@@ -23,10 +25,21 @@ function Shop1({ headleAdd }) {
     setSearchTerm(term);
   };
 
+  const handleSearch1 = (event) => {
+    const term1 = event.target.value;
+    setSearchTerm1(term1);
+  };
+
   const getFilteredCards = () => {
     let filteredCards = cards.filter((card) =>
       card.title.toLowerCase().includes(searchTerm)
     );
+
+    if (searchTerm1) {
+      filteredCards = filteredCards.filter((card) =>
+        card.id.toString().includes(searchTerm1)
+      );
+    }
 
     if (filter === "a-z") {
       return filteredCards.slice(0, 6);
@@ -50,11 +63,20 @@ function Shop1({ headleAdd }) {
 
         <div className="glavniy_main">
           <div className="glavniy_left">
-            <h1>Ecommerce Accessories & Fashion item</h1>
+            <h1>Ecommerce Accessories & Fashion</h1>
             <p>About {filteredCards.length} results found</p>
           </div>
           <div className="glavniy_right">
-            <p>Per Page:</p>
+            <p>
+              Per Page:
+              <input
+                type="search"
+                value={searchTerm1}
+                onChange={handleSearch1}
+                placeholder="Search
+                 ID"
+              />
+            </p>
             <p>Sort By:</p>
             <select
               name="sort"
@@ -65,13 +87,15 @@ function Shop1({ headleAdd }) {
               <option value="a-z">A-Z</option>
               <option value="z-a">Z-A</option>
             </select>
-            <p>
-              View:
+            <div className="view">
+              <p>View:</p>
               <NavLink to="/shop">
-                <FaBarsProgress />
+                <CgMenuGridO />
               </NavLink>
-              <AiOutlineBars />
-            </p>
+              <NavLink to="/shop1">
+                <AiOutlineBars />
+              </NavLink>
+            </div>
             <input
               type="search"
               placeholder="Search..."
@@ -99,11 +123,11 @@ function Shop1({ headleAdd }) {
                     <div className="card_cost2">
                       <p>${item.cost}.00</p>
                       <del>${item.cost1}.00</del>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Magna in est adipiscing in phasellus non in justo.
-                      </p>
                     </div>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Magna in est adipiscing in phasellus non in justo.
+                    </p>
                     <div className="shop_icon1">
                       <div>
                         <FaShoppingCart onClick={() => headleAdd(item)} />

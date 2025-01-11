@@ -3,11 +3,12 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FaShoppingCart, FaHeart, FaSearchPlus } from "react-icons/fa";
 import { AiOutlineBars } from "react-icons/ai";
 import { FaBarsProgress } from "react-icons/fa6";
+import { CgMenuGridO } from "react-icons/cg";
 import Ohir1 from "../assets/15.png";
 
-function Shop({cards, headleAdd }) {
+function Shop({ cards, headleAdd }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchTerm1, setSearchTerm1] = useState("");  
+  const [searchTerm1, setSearchTerm1] = useState("");
   const [likedCards, setLikedCards] = useState([]);
   const [filter, setFilter] = useState("all");
 
@@ -31,7 +32,6 @@ function Shop({cards, headleAdd }) {
     let filteredCards = cards.filter((card) =>
       card.title.toLowerCase().includes(searchTerm)
     );
-
 
     if (searchTerm1) {
       filteredCards = filteredCards.filter((card) =>
@@ -61,45 +61,54 @@ function Shop({cards, headleAdd }) {
 
         <div className="glavniy_main">
           <div className="glavniy_left">
-            <h1>Ecommerce Accessories & Fashion items</h1>
+            <h1>Ecommerce Accessories & Fashion</h1>
             <p>About {filteredCards.length} results found</p>
           </div>
           <div className="glavniy_right">
-            <p>
-              Per Page: 
+            <div className="per_page_sort">
+              <div className="per_page">
+                <p>
+                  Per Page:
+                  <input
+                    type="search"
+                    value={searchTerm1}
+                    onChange={handleSearch1}
+                    placeholder="Search
+                 ID"
+                  />
+                </p>
+              </div>
+              <div className="sort_by">
+                <p>Sort By:</p>
+                <select
+                  name="sort"
+                  className="davlat1"
+                  onChange={(e) => setFilter(e.target.value)}
+                >
+                  <option value="all">All</option>
+                  <option value="a-z">Arzon</option>
+                  <option value="z-a">Qimat</option>
+                </select>
+              </div>
+            </div>
+            <div className="view">
+              <div className="view_ichi">
+                <p>View:</p>
+                <NavLink to="/shop">
+                  <CgMenuGridO />
+                </NavLink>
+                <NavLink to="/shop1">
+                  <AiOutlineBars />
+                </NavLink>
+              </div>
+              
               <input
                 type="search"
-                value={searchTerm1}
-                onChange={handleSearch1}
-                placeholder="Search
-                 ID"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={handleSearch}
               />
-            </p>
-            <p>Sort By:</p>
-            <select
-              name="sort"
-              className="davlat1"
-              onChange={(e) => setFilter(e.target.value)}
-            >
-              <option value="all">All</option>
-              <option value="a-z">A-Z</option>
-              <option value="z-a">Z-A</option>
-            </select>
-            <p>
-              View:
-              <NavLink to="/shop">
-                <FaBarsProgress />
-              </NavLink>
-              <NavLink to="/shop1">
-                <AiOutlineBars />
-              </NavLink>
-            </p>
-            <input
-              type="search"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={handleSearch}
-            />
+            </div>
           </div>
         </div>
 
@@ -146,7 +155,7 @@ function Shop({cards, headleAdd }) {
         </div>
 
         <div className="shop_ohir">
-          <img src={Ohir1} alt="Footer" />
+          {/* <img src={Ohir1} alt="Footer" /> */}
         </div>
       </div>
     </div>

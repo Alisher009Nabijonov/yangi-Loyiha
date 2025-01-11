@@ -46,30 +46,32 @@ function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
             <div className="shopping_items">
               {shop.map((item, index) => (
                 <div key={index} className="shopping_item">
-                  <div className="img">
-                    <div>
-                      <img
-                        src={item.img}
-                        alt={item.title}
-                        className="shopping-item-img"
-                      />
-                    </div>
+                  <div className="Shoping_img">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="shopping-item-img"
+                    />
+                  </div>
+                  <div className="divvvvvv">
                     <div>
                       <h3>{item.title}</h3>
                       <input type="color" />
                       <p>Size: XL</p>
                     </div>
-                  </div>
-                  <div>
-                    <h3>${item.cost}.00</h3>
-                  </div>
-                  <div className="caunter">
-                    <button onClick={() => increment(index)}>+</button>
-                    <p>{caunter[index]}</p>
-                    <button onClick={() => decrement(index)}>-</button>
-                  </div>
-                  <div>
-                    <h3>${item.cost1}.00</h3>
+                    <div className="shop_cost_caunter">
+                      <div>
+                        <h3>${item.cost}.00</h3>
+                      </div>
+                      <div className="caunter">
+                        <button onClick={() => increment(index)}>+</button>
+                        <p>{caunter[index]}</p>
+                        <button onClick={() => decrement(index)}>-</button>
+                      </div>
+                      <div>
+                        <h3>${item.cost1}.00</h3>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -77,29 +79,32 @@ function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
           ) : (
             <h1>Hozircha Savat Bo'sh!!!</h1>
           )}
-          <div className="total_cost">
-            <h2 className="total_h2">Cart Totals</h2>
-            <div className="total_main">
-              <div className="total1">
-                <h2>Subtotals:</h2>
-                <h2>${totalCost}.00</h2>
+        </div>
+        <div className="total_cost">
+          <h2 className="total_h2">Cart Totals</h2>
+          <div className="total_main">
+            <div className="total1">
+              <h2>Subtotals:</h2>
+              <h2>${totalCost}.00</h2>
+            </div>
+            <div className="total1">
+              <h2>Totals:</h2>
+              <h2>${totalCost1}.00</h2>
+            </div>
+            <div className="total2">
+              <div className="total3">
+                <input type="checkbox" />
+                <p className="total_p">
+                  Shipping & taxes calculated at checkout
+                </p>
               </div>
-              <div className="total1">
-                <h2>Totals:</h2>
-                <h2>${totalCost1}.00</h2>
-              </div>
-              <div className="total2">
-                <div className="total3">
-                  <input type="checkbox" />
-                  <p className="total_p">Shipping & taxes calculated at checkout</p>
-                </div>
-                <div>
-                  <button className="total_btn">Proceed To Checkout</button>
-                </div>
+              <div>
+                <button className="total_btn">Proceed To Checkout</button>
               </div>
             </div>
           </div>
         </div>
+
         <Outlet />
       </div>
     </div>

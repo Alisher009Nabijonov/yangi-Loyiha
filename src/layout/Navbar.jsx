@@ -26,8 +26,8 @@ const Navbar = () => {
                         <option value="English1">English1</option>
                     </select>
 
-                    <p>Wishlist<FaHeart /></p>
                    
+                    <p>Wishlist<FaHeart /></p>
                 </div>
             </div>
            

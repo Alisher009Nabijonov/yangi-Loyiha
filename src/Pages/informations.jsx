@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
-import { IoIosStar } from "react-icons/io";
-import { FaHeart } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -17,56 +17,51 @@ const informations = () => {
     return <p>object not faund</p>;
   }
   return (
-    // <div className="product-card">
-    //   <div className="images-section">
-    //   {product.Imgs.map((item, id) =>(
-    //         <div className="thumbnail" key={id}>
-    //             <img src={item} alt={item} />
-    //         </div>
-    //     ))}
-    //   </div>
-    //   <div className="main-section">
-    //     <h2>Playwood arm chair</h2>
-    //     <div className="rating">
-    //       <span>⭐⭐⭐⭐⭐</span> <span className="review-count">(22)</span>
-    //     </div>
-    //     <div className="price">
-    //       <span className="current-price">$32.00</span>
-    //       <span className="old-price">$39.00</span>
-    //     </div>
-    //     <div className="color">
-    //       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.</p>
-    //     </div>
-    //     <button className="add-to-cart">Add To Cart</button>
-    //     <div className="categories">
-    //       <p><strong>Categories:</strong></p>
-    //     </div>
-    //     <div className="tags">
-    //       <p><strong>Tags:</strong></p>
-    //     </div>
-    //     <div className="share">
-    //       <p><strong>Share:</strong></p>
-    //       <div className="icons">
-    //         <span>🔵</span>
-    //         <span>🟣</span>
-    //         <span>🟡</span>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-
-    <div className="information">
-      <div className="information-left">
-        <div className="gallery">
-          {product.Imgs.map((item, id) => (
-            <div className={id === 3 ? "main-image" : "thumbnail"} key={id}>
-              <img src={item} alt={`Thumbnail ${id}`} />
-            </div>
-          ))}
+    <div className="informativ">
+      <div className="information_tepa">
+        <h1>Product Details</h1>
+        <div className="information_tepa_link">
+          <NavLink to="/home">Home. </NavLink>
+          <NavLink to="/pages">Pages </NavLink>
+          <span>Product Details</span>
         </div>
       </div>
+      <div className="information">
+        <div className="information-left">
+          <div className="gallery">
+            {product.Imgs.map((item, id) => (
+              <div className={id === 3 ? "main-image" : "thumbnail"} key={id}>
+                <img src={item} alt={`Thumbnail ${id}`} />
+              </div>
+            ))}
+          </div>
+        </div>
 
-      <div className="information-right"></div>
+        <div className="information_right">
+          <h1>{product.title}</h1>
+          <div className="information_icon_right">
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <p>(22)</p>
+          </div>
+          <div className="information_cost_right">
+            <h2>${product.cost}.00</h2>
+            <del>${product.cost1}.00 </del>
+          </div>
+          <h2 className="color">Color</h2>
+          <p className="color_p">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+            tellus porttitor purus, et volutpat sit.
+          </p>
+          <button className="information_btn1">Add To cart <CiHeart/></button>
+          <h2 className="catigoriy_info">Categories:</h2>
+          <h2 className="catigoriy_info">Tags</h2>
+          <h2 className="catigoriy_info">Share</h2>
+        </div>
+      </div>
     </div>
   );
 };

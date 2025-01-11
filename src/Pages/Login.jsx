@@ -53,11 +53,13 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login1">
+        <div className="login112">
         <h1>My Account</h1>
         <div className="login1_pas">
           <NavLink to="/home">Home.</NavLink>
           <NavLink to="/pages">Pages.</NavLink>
           <p>My Account</p>
+          </div>
         </div>
       </div>
       <div className="login_main">

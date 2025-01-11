@@ -1,7 +1,5 @@
 import React, { useRef, useState } from "react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-
 import { NavLink, Outlet } from "react-router-dom";
 
 import Blog1 from "../assets/20.png";
@@ -82,93 +80,26 @@ export default function App() {
             <span className="title_span">Blog Page</span>
           </div>
           <div className="blog_pas_katta">
-            <Swiper
-              pagination={pagination}
-              modules={[Pagination]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <div className="blog_pas">
-                  {posts.map((post) => (
-                    <div className="blog_post" key={post.id}>
-                      <img src={post.image} alt={post.title} />
-                      <div className="blog-content">
-                        <p className="blog-meta">
-                          <div className="blog_data">
-                            <span>{post.category}</span>
-                            <span>{post.date}</span>
-                          </div>
-                        </p>
-                        <h3>{post.title}</h3>
-                        <p>{post.description}</p>
-                        <a href="#">Read More...</a>
-                      </div>
+            <div className="blog_pas_left">
+              <div className="blog_pas">
+                {posts.map((post) => (
+                  <div className="blog_post" key={post.id}>
+                    <img src={post.image} alt={post.title} />
+                    <div className="blog-content">
+                      <p className="blog-meta">
+                        <div className="blog_data">
+                          <span>{post.category}</span>
+                          <span>{post.date}</span>
+                        </div>
+                      </p>
+                      <h3>{post.title}</h3>
+                      <p>{post.description}</p>
+                      <a href="#">Read More...</a>
                     </div>
-                  ))}
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="blog_pas">
-                  {posts.map((post) => (
-                    <div className="blog_post" key={post.id}>
-                      <img src={post.image} alt={post.title} />
-                      <div className="blog-content">
-                        <p className="blog-meta">
-                          <div className="blog_data">
-                            <span>{post.category}</span>
-                            <span>{post.date}</span>
-                          </div>
-                        </p>
-                        <h3>{post.title}</h3>
-                        <p>{post.description}</p>
-                        <a href="#">Read More...</a>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="blog_pas">
-                  {posts.map((post) => (
-                    <div className="blog_post" key={post.id}>
-                      <img src={post.image} alt={post.title} />
-                      <div className="blog-content">
-                        <p className="blog-meta">
-                          <div className="blog_data">
-                            <span>{post.category}</span>
-                            <span>{post.date}</span>
-                          </div>
-                        </p>
-                        <h3>{post.title}</h3>
-                        <p>{post.description}</p>
-                        <a href="#">Read More...</a>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="blog_pas">
-                  {posts.map((post) => (
-                    <div className="blog_post" key={post.id}>
-                      <img src={post.image} alt={post.title} />
-                      <div className="blog-content">
-                        <p className="blog-meta">
-                          <div className="blog_data">
-                            <span>{post.category}</span>
-                            <span>{post.date}</span>
-                          </div>
-                        </p>
-                        <h3>{post.title}</h3>
-                        <p>{post.description}</p>
-                        <a href="#">Read More...</a>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </SwiperSlide>
-            </Swiper>
-
+                  </div>
+                ))}
+              </div>
+            </div>
             <div className="blog_pas_right">
               <div className="blog_search">
                 <h2>Search</h2>
@@ -318,7 +249,7 @@ export default function App() {
             <Outlet />
           </div>
           <div className="blog_img_ohir">
-            <img src={blog15} alt="" />
+            {/* <img src={blog15} alt="" /> */}
           </div>
         </div>
       </div>
