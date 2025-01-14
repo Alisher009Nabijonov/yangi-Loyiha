@@ -113,8 +113,10 @@ function RootLayout() {
           <div className="footer1">
             <div className="footer11">
               <h1>Hekto</h1>
+              <div className="footer_input_btn">
               <input type="text" placeholder="Enter Email Address" />
-              <button>Sign Up</button>
+              <button>Sign Up</button> 
+              </div>
               <p>Contact Info</p>
               <p>17 Princess Road, London, Greater London NW1 8JR, UK</p>
             </div>
@@ -148,13 +150,21 @@ function RootLayout() {
         </div>
       </footer>
       <div className="footer_pas">
+        <div className="footer_pas_main">
         <div className="pas_left">
           <p>©Webecy - All Rights Reserved</p>
         </div>
         <div className="pas_right">
+          <div className="pas_right_icon">
           <FaFacebookF />
+          </div>
+          <div className="pas_right_icon">
           <FaInstagram />
+          </div>
+          <div className="pas_right_icon">
           <FaTwitter />
+          </div>
+        </div>
         </div>
       </div>
     </>

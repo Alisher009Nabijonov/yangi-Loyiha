@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 
 import { NavLink, Outlet } from "react-router-dom";
+import { FaShoppingCart, FaHeart } from "react-icons/fa";
 
 import Blog1 from "../assets/20.png";
 import Blog2 from "../assets/21.png";
@@ -39,7 +40,7 @@ export default function App() {
     },
   };
 
-  const posts = [
+  const [posts, setPosts] = useState([
     {
       id: 1,
       title: "Mauris at orci non vulputate diam tincidunt nec.",
@@ -47,7 +48,10 @@ export default function App() {
       category: "Fashion",
       image: Blog1,
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum.Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+      extraText:
+        "Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+      showMore: false,
     },
     {
       id: 2,
@@ -56,7 +60,10 @@ export default function App() {
       category: "Travel",
       image: Blog2,
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum.",
+      extraText:
+        "Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+      showMore: false,
     },
     {
       id: 3,
@@ -65,9 +72,114 @@ export default function App() {
       category: "Surf Auxion",
       image: Blog3,
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum.",
+      extraText:
+        "Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+      showMore: false,
+    },
+  ]);
+
+  const toggleShowMore = (id) => {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) =>
+        post.id === id ? { ...post, showMore: !post.showMore } : post
+      )
+    );
+  };
+
+  const [searchText, setSearchText] = useState("");
+
+  const recentPosts = [
+    {
+      id: 1,
+      title: "It is a long established fact",
+      date: "Aug 09 2020",
+      image: blog4,
+    },
+    {
+      id: 2,
+      title: "It is a long established fact",
+      date: "Aug 09 2020",
+      image: blog5,
+    },
+    {
+      id: 3,
+      title: "It is a long established fact",
+      date: "Aug 09 2020",
+      image: blog6,
+    },
+    {
+      id: 4,
+      title: "It is a long established fact",
+      date: "Aug 09 2020",
+      image: blog7,
     },
   ];
+
+  const saleProducts = [
+    {
+      id: 1,
+      title: "Elit ornare in enim mauris.",
+      date: "Aug 09 2020",
+      image: blog8,
+    },
+    {
+      id: 2,
+      title: "Elit ornare in enim mauris.",
+      date: "Aug 09 2020",
+      image: blog9,
+    },
+    {
+      id: 3,
+      title: "Elit ornare in enim mauris.",
+      date: "Aug 09 2020",
+      image: blog10,
+    },
+  ];
+
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value.toLowerCase());
+  };
+
+  const filteredRecentPosts = recentPosts.filter((post) =>
+    post.title.toLowerCase().includes(searchText)
+  );
+
+  const filteredSaleProducts = saleProducts.filter((product) =>
+    product.title.toLowerCase().includes(searchText)
+  );
+
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const offerProducts = [
+    {
+      id: 1,
+      title: "Duis lectus est.",
+      price: "$12.00 - $15.00",
+      image: blog11,
+    },
+    { id: 2, title: "Sed placerat.", price: "$12.00 - $15.00", image: blog12 },
+    { id: 3, title: "Netus proin.", price: "$12.00 - $15.00", image: blog13 },
+    { id: 4, title: "Platea in.", price: "$12.00 - $15.00", image: blog14 },
+  ];
+
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const [likedCards, setLikedCards] = useState([]);
+
+  const handleHeartClick = (id) => {
+    setLikedCards((prev) =>
+      prev.includes(id) ? prev.filter((cardId) => cardId !== id) : [...prev, id]
+    );
+  };
 
   return (
     <>
@@ -93,8 +205,19 @@ export default function App() {
                         </div>
                       </p>
                       <h3>{post.title}</h3>
-                      <p>{post.description}</p>
-                      <a href="#">Read More...</a>
+                      <p>
+                        {post.description}
+                        {post.showMore && <span> {post.extraText}</span>}
+                      </p>
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleShowMore(post.id);
+                        }}
+                      >
+                        {post.showMore ? "Read Less..." : "Read More..."}
+                      </a>
                     </div>
                   </div>
                 ))}
@@ -103,7 +226,12 @@ export default function App() {
             <div className="blog_pas_right">
               <div className="blog_search">
                 <h2>Search</h2>
-                <input type="search" placeholder="Search..." />
+                <input
+                  type="search"
+                  placeholder="Search..."
+                  value={searchText}
+                  onChange={handleSearchChange}
+                />
               </div>
               <div className="blog_catigoriy">
                 <h2>Categories</h2>
@@ -123,105 +251,136 @@ export default function App() {
 
               <div className="recent">
                 <h2>Recent Post</h2>
-                <div className="blog_card1">
-                  <div>
-                    <img src={blog4} alt="" />
+                {filteredRecentPosts.map((post) => (
+                  <div className="blog_card1" key={post.id}>
+                    <div>
+                      <img src={post.image} alt={post.title} />
+                    </div>
+                    <div>
+                      <h3>{post.title}</h3>
+                      <p>{post.date}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3>It is a long established fact</h3>
-                    <p>Aug 09 2020</p>
-                  </div>
-                </div>
-                <div className="blog_card1">
-                  <div>
-                    <img src={blog5} alt="" />
-                  </div>
-                  <div>
-                    <h3>It is a long established fact</h3>
-                    <p>Aug 09 2020</p>
-                  </div>
-                </div>
-                <div className="blog_card1">
-                  <div>
-                    <img src={blog6} alt="" />
-                  </div>
-                  <div>
-                    <h3>It is a long established fact</h3>
-                    <p>Aug 09 2020</p>
-                  </div>
-                </div>
-                <div className="blog_card1">
-                  <div>
-                    <img src={blog7} alt="" />
-                  </div>
-                  <div>
-                    <h3>It is a long established fact</h3>
-                    <p>Aug 09 2020</p>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              {/*  */}
               <div className="recent">
                 <h2>Sale Product</h2>
-                <div className="blog_card1">
-                  <div>
-                    <img src={blog8} alt="" />
+                {filteredSaleProducts.map((product) => (
+                  <div className="blog_card1" key={product.id}>
+                    <div>
+                      <img src={product.image} alt={product.title} />
+                    </div>
+                    <div>
+                      <h3>{product.title}</h3>
+                      <p>{product.date}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3>Elit ornare in enim mauris.</h3>
-                    <p>Aug 09 2020</p>
-                  </div>
-                </div>
-                <div className="blog_card1">
-                  <div>
-                    <img src={blog9} alt="" />
-                  </div>
-                  <div>
-                    <h3>Elit ornare in enim mauris.</h3>
-                    <p>Aug 09 2020</p>
-                  </div>
-                </div>
-                <div className="blog_card1">
-                  <div>
-                    <img src={blog10} alt="" />
-                  </div>
-                  <div>
-                    <h3>Elit ornare in enim mauris.</h3>
-                    <p>Aug 09 2020</p>
-                  </div>
-                </div>
+                ))}
               </div>
 
               <div className="ofer">
                 <h2>Offer product</h2>
                 <div className="ofer_cards">
                   <div className="ofer_cards_left">
-                    <div className="ofer_caard">
-                      <img src={blog11} alt="" />
-                      <h3>Duis lectus est.</h3>
-                      <p>$12.00 - $15.00</p>
-                    </div>
-                    <div className="ofer_caard">
-                      <img src={blog12} alt="" />
-                      <h3>Sed placerat.</h3>
-                      <p>$12.00 - $15.00</p>
-                    </div>
+                    {offerProducts.slice(0, 2).map((product) => (
+                      <div
+                        className="ofer_caard"
+                        key={product.id}
+                        onClick={() => openModal(product)}
+                      >
+                        <img src={product.image} alt={product.title} />
+                        <h3>{product.title}</h3>
+                        <p>{product.price}</p>
+                      </div>
+                    ))}
                   </div>
                   <div className="ofer_cards_left">
-                    <div className="ofer_caard">
-                      <img src={blog13} alt="" />
-                      <h3>Netus proin.</h3>
-                      <p>$12.00 - $15.00</p>
-                    </div>
-                    <div className="ofer_caard">
-                      <img src={blog14} alt="" />
-                      <h3>Platea in.</h3>
-                      <p>$12.00 - $15.00</p>
-                    </div>
+                    {offerProducts.slice(2).map((product) => (
+                      <div
+                        className="ofer_caard"
+                        key={product.id}
+                        onClick={() => openModal(product)}
+                      >
+                        <img src={product.image} alt={product.title} />
+                        <h3>{product.title}</h3>
+                        <p>{product.price}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
+
+              {isModalOpen && selectedProduct && (
+                <div className="modal">
+                  <div className="modal_content">
+                    <button className="close_modal" onClick={closeModal}>
+                      X
+                    </button>
+                    <img
+                      src={selectedProduct.image}
+                      alt={selectedProduct.title}
+                    />
+                    <h1>{selectedProduct.title}</h1>
+                    <h3>{selectedProduct.price}</h3>
+                    <div className="modal_icon">
+                      <h1>
+                        <FaShoppingCart />
+                      </h1>
+                      <h1>
+                        {" "}
+                        <FaHeart
+                          onClick={() => handleHeartClick(offerProducts.id)}
+                          style={{
+                            cursor: "pointer",
+                            color: likedCards.includes(offerProducts.id)
+                              ? "red"
+                              : "black",
+                            fontSize: "24px",
+                            transition: "color 0.3s ease-in-out",
+                          }}
+                        />
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <style jsx>{`
+                .modal {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: rgba(0, 0, 0, 0.5);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  z-index: 1000;
+                }
+                .modal_content {
+                  width: 350px;
+                  height: 400px;
+                  background: white;
+                  padding: 20px;
+                  border-radius: 10px;
+                  text-align: center;
+                  position: relative;
+                }
+                .close_modal {
+                  position: absolute;
+                  top: 10px;
+                  right: 10px;
+                  border: none;
+                  padding: 5px 10px;
+                  cursor: pointer;
+                }
+                .modal_content img {
+                  width: 100%;
+                  height: auto;
+                }
+              `}</style>
 
               <div className="follower">
                 <h2>Follow</h2>
