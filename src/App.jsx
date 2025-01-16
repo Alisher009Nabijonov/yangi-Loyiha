@@ -94,7 +94,7 @@ function App() {
         <Route path="faq" element={<Faq />} />
         <Route path="about" element={<About />} />
         <Route path="cantactus" element={<CantactUs />} />
-        <Route path="shop1" element={<Shop1 />} />
+        <Route path="shop1" element={<Shop1 cards={cards} headleAdd={headleAdd} />} />
         <Route path="login" element={<Login />} />
       </Route>
     )

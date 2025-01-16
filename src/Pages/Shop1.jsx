@@ -67,41 +67,50 @@ function Shop1({ headleAdd }) {
             <p>About {filteredCards.length} results found</p>
           </div>
           <div className="glavniy_right">
-            <p>
-              Per Page:
+            <div className="per_page_sort">
+              <div className="per_page">
+                <p>
+                  Per Page:
+                  <input
+                    type="search"
+                    value={searchTerm1}
+                    onChange={handleSearch1}
+                    placeholder="Search
+                 ID"
+                  />
+                </p>
+              </div>
+              <div className="sort_by">
+                <p>Sort By:</p>
+                <select
+                  name="sort"
+                  className="davlat1"
+                  onChange={(e) => setFilter(e.target.value)}
+                >
+                  <option value="all">All</option>
+                  <option value="a-z">Arzon</option>
+                  <option value="z-a">Qimat</option>
+                </select>
+              </div>
+            </div>
+            <div className="view">
+              <div className="view_ichi">
+                <p>View:</p>
+                <NavLink to="/shop">
+                  <CgMenuGridO />
+                </NavLink>
+                <NavLink to="/shop1">
+                  <AiOutlineBars />
+                </NavLink>
+              </div>
+              
               <input
                 type="search"
-                value={searchTerm1}
-                onChange={handleSearch1}
-                placeholder="Search
-                 ID"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={handleSearch}
               />
-            </p>
-            <p>Sort By:</p>
-            <select
-              name="sort"
-              className="davlat1"
-              onChange={(e) => setFilter(e.target.value)}
-            >
-              <option value="all">All</option>
-              <option value="a-z">A-Z</option>
-              <option value="z-a">Z-A</option>
-            </select>
-            <div className="view">
-              <p>View:</p>
-              <NavLink to="/shop">
-                <CgMenuGridO />
-              </NavLink>
-              <NavLink to="/shop1">
-                <AiOutlineBars />
-              </NavLink>
             </div>
-            <input
-              type="search"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={handleSearch}
-            />
           </div>
         </div>
 

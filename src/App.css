@@ -2794,6 +2794,7 @@ button {
 }
 .topcard_img:hover {
   box-shadow: -4px 6px 0px 0px #3714fccc;
+  transform: rotate(20deg);
 }
 
 .topcard_main h2 {
@@ -2992,3 +2993,116 @@ button {
 .home_card111_link a.active {
   color: #fb2e86;
 }
+
+
+
+
+
+.home_shop_h1, .home_card111_h1, .about_our h1, .treding_page h1, .home121314_page h1, .topcard h1, .homeget_main_h1, .leatest1_h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.shop_card_main, .our_card, .topcard_main, .leatest_post1 {
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.shop_card_main:hover, .our_card:hover, .topcard_main:hover, .leatest_post1:hover {
+  transform: scale(1.05);
+}
+
+.shop_icon div {
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.card_cost p, .card_cost del {
+  font-size: 1.2rem;
+  margin: 5px;
+}
+
+@media (max-width: 1200px) {
+  .home_cards_shop11, .home_cards_shop11112, .our_cards, .topcard_row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .home_cards_shop11, .home_cards_shop11112, .our_cards, .topcard_row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home_kata_page_main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home_kata_page_left img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .home_cards_shop11, .home_cards_shop11112, .our_cards, .topcard_row {
+    grid-template-columns: 1fr;
+  }
+
+  .modal_content {
+    width: 90%;
+    height: auto;
+  }
+
+  .btn_home_cost1 button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .home_shop_h1, .home_card111_h1, .about_our h1, .treding_page h1, .home121314_page h1, .topcard h1, .homeget_main_h1, .leatest1_h1 {
+    font-size: 1.8rem;
+  }
+
+  .shop_icon div {
+    font-size: 20px;
+  }
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal_content img {
+  width: 100%;
+  height: auto;
+}
+
+.close_modal {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 50%;
+}
+
+.btn_home_cost1 button {
+  background-color: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn_home_cost1 button:hover {
+  background-color: #cc5200;
+}
+

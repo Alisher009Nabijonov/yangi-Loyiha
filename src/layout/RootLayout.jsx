@@ -97,7 +97,7 @@ function RootLayout() {
             </div>
           </div>
           <div className="nav_ohir">
-            <input type="search" placeholder="Search..." />
+            <input type="search" pmplaceholder="Search..." />
             <button>
               <FaSearch />
             </button>
