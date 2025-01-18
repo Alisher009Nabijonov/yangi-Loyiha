@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import "./App.css";
 // malumotlar /////////
 import { cards } from "./Malumotlar";
@@ -23,18 +24,44 @@ import About from "./Pages/About";
 import CantactUs from "./Pages/CantactUs";
 import Shop1 from "./Pages/Shop1";
 import Login from "./Pages/Login";
-
 import RootLayout from "./layout/RootLayout";
-import { useState } from "react";
-
 import Home12 from "./Help/Home12";
 import Home13 from "./Help/Home13";
 import Home14 from "./Help/Home14";
 
+import ru from "./Languig/homeru";
+import en from "./Languig/homeen";
+import uz from "./Languig/homeuz";
 
+import { Dropdown } from "rsuite";
+
+const languages = { en, uz, ru };
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const savedMode = localStorage.getItem("darkMode") === "true";
+    setIsDarkMode(savedMode);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", isDarkMode);
+    if (isDarkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
   const [shop, setShop] = useState([]);
+
+  const [language, setLanguage] = useState("en");
+
+  const t = (key) => languages[language]?.[key] || ` ${key}`;
 
   const headleAdd = (item) => {
     setShop((prevShop) => {
@@ -59,14 +86,22 @@ function App() {
   const routes = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        {/* <Route index element={<Home cards={cards} headleAdd={headleAdd}/>} /> */}
-        <Route path="/" element={<Home cards={cards} headleAdd={headleAdd} />}>
+        <Route
+          path="/"
+          element={
+            <Home
+              cards={cards}
+              headleAdd={headleAdd}
+              setLanguage={setLanguage}
+              t={t}
+            />
+          }
+        >
           <Route path="home12" element={<Home12 />} />
           <Route path="home13" element={<Home13 />} />
           <Route path="home14" element={<Home14 />} />
-         
         </Route>
-       
+
         <Route
           path="pages"
           element={<Pages />}
@@ -77,7 +112,14 @@ function App() {
         <Route path="blog" element={<Blog />} />
         <Route
           path="shop"
-          element={<Shop cards={cards} headleAdd={headleAdd} />}
+          element={
+            <Shop
+              cards={cards}
+              headleAdd={headleAdd}
+              setLanguage={setLanguage}
+              t={t}
+            />
+          }
         />
         <Route path="contact" element={<Contact />} />
         <Route
@@ -91,20 +133,81 @@ function App() {
           }
         />
         <Route path="informations/:id" element={<Informations />} />
-        <Route path="faq" element={<Faq />} />
-        <Route path="about" element={<About />} />
+        <Route path="faq" element={<Faq setLanguage={setLanguage} t={t} />} />
+        <Route
+          path="about"
+          element={<About setLanguage={setLanguage} t={t} />}
+        />
         <Route path="cantactus" element={<CantactUs />} />
-        <Route path="shop1" element={<Shop1 cards={cards} headleAdd={headleAdd} />} />
+        <Route
+          path="shop1"
+          element={<Shop1 cards={cards} headleAdd={headleAdd} />}
+        />
         <Route path="login" element={<Login />} />
       </Route>
     )
   );
 
+  // const CustomDropdown = ({ ...props }) => (
+  //   <Dropdown {...props}>
+  //    <div className="dropdovn1">
+  //    <Dropdown.Item className="dropdovn1_btn">
+  //       <button className="sdssesfgdsgr" onClick={() => setLanguage("uz")}>
+  //         O'zbek
+  //       </button>
+
+  //     </Dropdown.Item>
+  //     <Dropdown.Item className="dropdovn1_btn">
+  //     <button className="sdssesfgdsgr" onClick={() => setLanguage("ru")}>
+  //         Русский
+  //       </button>
+  //     </Dropdown.Item>
+  //     <Dropdown.Item className="dropdovn1_btn">
+  //     <button className="sdssesfgdsgr" onClick={() => setLanguage("en")}>
+  //             English
+  //           </button>
+  //     </Dropdown.Item>
+  //    </div>
+
+  //   </Dropdown>
+  // );
   return (
-    <div className="App">
-      <Navbar />
-      <RouterProvider router={routes} />
-    </div>
+    <>
+      <div className="App">
+        <Navbar />
+        {/* <div className="App">
+          <button onClick={toggleTheme} className="theme-toggle-btn">
+            {isDarkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+        </div> */}
+        <div className="tillar">
+          <div className="li">
+            <button className="sdssesfgdsgr" onClick={() => setLanguage("en")}>
+              English
+            </button>
+            <div className="dropdown">
+              <div className="dropdown_ich">
+                <button
+                  className="sdssesfgdsgr"
+                  onClick={() => setLanguage("ru")}
+                >
+                  Русский
+                </button>
+                <button
+                  className="sdssesfgdsgr"
+                  onClick={() => setLanguage("uz")}
+                >
+                  O'zbek
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* <CustomDropdown title={t("shop12")} trigger="click" /> */}
+        </div>
+
+        <RouterProvider router={routes} />
+      </div>
+    </>
   );
 }
 

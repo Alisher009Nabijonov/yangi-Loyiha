@@ -31,15 +31,13 @@ function RootLayout() {
                 <NavLink to="/">Home</NavLink>
                 <div className="dropdown">
                   <NavLink to="/faq">Faq</NavLink>
-                  <NavLink to="/about">About</NavLink>
-                  <NavLink to="/cantactus">Contact Us</NavLink>
                 </div>
               </div>
-              <NavLink to="/pages">Pages</NavLink>
+                  <NavLink to="/about">About</NavLink>
               <NavLink to="/products">Products</NavLink>
               <NavLink to="/blog">Blog</NavLink>
               <NavLink to="/shop">Shop</NavLink>
-              <NavLink to="/contact">Contact</NavLink>
+              <NavLink to="/cantactus">Contact</NavLink>
               <NavLink to="/shoping">
                 <FaShoppingCart />
               </NavLink>

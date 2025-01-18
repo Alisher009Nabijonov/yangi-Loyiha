@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import 'react-phone-input-2/lib/style.css'
+import PhoneInput from "react-phone-input-2";
 import { Toaster, toast } from "react-hot-toast";
-import { auth } from "../firebase"; 
+import { auth } from "../firebase";
+import { Button } from "rsuite";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -117,6 +120,12 @@ const Login = () => {
         </div>
       </div>
       <Outlet />
+      <PhoneInput
+        country={"uz"}
+        // value={this.state.phone}
+        // onChange={(phone) => this.setState({ phone })}
+      />
+      <Button variant='contained'>Send Otp</Button>
     </div>
   );
 };

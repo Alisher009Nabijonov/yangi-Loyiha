@@ -34,7 +34,7 @@ import HomeImg1 from "../assets/2.png";
 import { Pagination, Autoplay } from "swiper/modules";
 
 
-export default function App({ cards }) {
+export default function App({ cards, t, setLanguage }) {
   const [likedCards, setLikedCards] = useState([]);
 
   const handleHeartClick = (id) => {
@@ -224,6 +224,7 @@ export default function App({ cards }) {
 
   return (
     <>
+    
       <Swiper
         pagination={pagination}
         autoplay={{
@@ -236,13 +237,10 @@ export default function App({ cards }) {
         <SwiperSlide>
           <div className="banner">
             <div className="banner_center">
-              <h3>Best Furniture For Your Castle....</h3>
-              <h1>New Furniture Collection Trends in 2020</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna
-                in est adipiscing in phasellus non in justo.
-              </p>
-              <button>Shop Now</button>
+              <h3>{t("greeting")}</h3>
+              <h1>{t("welcome")}</h1>
+              <p>{t("changeLanguage")}</p>
+              <button>{t("btn")}</button>
             </div>
             <div className="banner_right">
               <img src={HomeImg1} alt="HOMEIMG1" />
@@ -252,13 +250,10 @@ export default function App({ cards }) {
         <SwiperSlide>
           <div className="banner">
             <div className="banner_center">
-              <h3>Best Furniture For Your Castle....</h3>
-              <h1>New Furniture Collection Trends in 2020</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna
-                in est adipiscing in phasellus non in justo.
-              </p>
-              <button>Shop Now</button>
+              <h3>{t("greeting")}</h3>
+              <h1>{t("welcome")}</h1>
+              <p>{t("changeLanguage")}</p>
+              <button>{t("btn")}</button>
             </div>
             <div className="banner_right">
               <img src={HomeImg1} alt="HOMEIMG1" />
@@ -268,13 +263,10 @@ export default function App({ cards }) {
         <SwiperSlide>
           <div className="banner">
             <div className="banner_center">
-              <h3>Best Furniture For Your Castle....</h3>
-              <h1>New Furniture Collection Trends in 2020</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna
-                in est adipiscing in phasellus non in justo.
-              </p>
-              <button>Shop Now</button>
+              <h3>{t("greeting")}</h3>
+              <h1>{t("welcome")}</h1>
+              <p>{t("changeLanguage")}</p>
+              <button>{t("btn")}</button>
             </div>
             <div className="banner_right">
               {/* <img src={HomeImg1} alt="HOMEIMG1" /> */}
@@ -282,7 +274,7 @@ export default function App({ cards }) {
           </div>
         </SwiperSlide>
       </Swiper>
-      <h1 className="home_shop_h1">Featured Products</h1>
+      <h1 className="home_shop_h1">{t("Featured")}</h1>
       <Swiper
         pagination={pagination}
         autoplay={{
@@ -423,15 +415,15 @@ export default function App({ cards }) {
         </div>
       </Swiper>
       <div className="home_card111">
-        <h1 className="home_card111_h1">Leatest Products</h1>
+        <h1 className="home_card111_h1">{t("Leatest")}</h1>
 
         <div className="home_card111_link">
-        <p>New Arrival</p>
-        <p>Best Seller</p>
-        <p>Featured</p>
-        <p>Special Offer</p>
-      </div>
-      <div className="home_cards_shop11112">
+          <p>{t("link1")}</p>
+          <p>{t("link2")}</p>
+          <p>{t("link3")}</p>
+          <p>{t("link4")}</p>
+        </div>
+        <div className="home_cards_shop11112">
           {cards.slice(0, 3).map((item) => (
             <div key={item.id} className="shop_card_main">
               <div className="dddddd12">
@@ -508,43 +500,30 @@ export default function App({ cards }) {
             </div>
           ))}
         </div>
-       
       </div>
 
       <div className="about_our">
-        <h1>What Shopex Offer!</h1>
+        <h1>{t("whot1")}</h1>
         <div className="our_cards">
           <div className="our_card">
             <img src={About2} alt="" />
-            <h2>24/7 Support</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
-              purus gravida.
-            </p>
+            <h2>{t("whot2")}</h2>
+            <p>{t("whot3")}</p>
           </div>
           <div className="our_card">
             <img src={About3} alt="" />
-            <h2>24/7 Support</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
-              purus gravida.
-            </p>
+            <h2>{t("whot2")}</h2>
+            <p>{t("whot3")}</p>
           </div>
           <div className="our_card">
             <img src={About4} alt="" />
-            <h2>24/7 Support</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
-              purus gravida.
-            </p>
+            <h2>{t("whot2")}</h2>
+            <p>{t("whot3")}</p>
           </div>
           <div className="our_card">
             <img src={About5} alt="" />
-            <h2>24/7 Support</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
-              purus gravida.
-            </p>
+            <h2>{t("whot2")}</h2>
+            <p>{t("whot3")}</p>
           </div>
         </div>
       </div>
@@ -555,26 +534,23 @@ export default function App({ cards }) {
             <img src={home_kata1} alt="" />
           </div>
           <div className="home_kata_page_right">
-            <h1>Unique Features Of leatest & Trending Poducts</h1>
+            <h1>{t("kata1")}</h1>
             <div className="rang_text">
               <div className="rangli1"></div>
-              <p>All frames constructed with hardwood solids and laminates</p>
+              <p>{t("kata2")}</p>
             </div>
             <div className="rang_text">
               <div className="rangli2"></div>
-              <p>
-                Reinforced with double wood dowels, glue, screw - nails corner
-                blocks and machine nails blocks and machine nails
-              </p>
+              <p>{t("kata3")}</p>
             </div>
             <div className="rang_text">
               <div className="rangli3"></div>
-              <p>Arms, backs and seats are structurally reinforced</p>
+              <p>{t("kata4")}</p>
             </div>
             <div className="btn_home_cost1">
-              <button>Add To Cart</button>
+              <button>{t("kata5")}</button>
               <div>
-                <h3>B&B Italian Sofa </h3>
+                <h3>{t("kata6")}</h3>
                 <p>$32.00</p>
               </div>
             </div>
@@ -583,7 +559,7 @@ export default function App({ cards }) {
       </div>
 
       <div className="treding_page">
-        <h1>Trending Products</h1>
+        <h1>{t("treding1")}</h1>
         <div className="home_cards_shop111123">
           {cards.slice(0, 4).map((item) => (
             <div key={item.id} className="shop_card_main23">
@@ -759,17 +735,17 @@ export default function App({ cards }) {
       </div>
 
       <div className="home121314_page">
-        <h1>Discount Item</h1>
+        <h1>{t("treding2")}</h1>
         <div className="home121314_link">
-          <NavLink to="/home12">Wood Chair</NavLink>
-          <NavLink to="/home13">Plastic Chair</NavLink>
-          <NavLink to="/home14">Sofa Colletion</NavLink>
+          <NavLink to="/home12">{t("link5")}</NavLink>
+          <NavLink to="/home13">{t("link6")}</NavLink>
+          <NavLink to="/home14">{t("link7")}</NavLink>
         </div>
       </div>
       <Outlet />
 
       <div className="topcard">
-        <h1>Top Categories</h1>
+        <h1>{t("top1")}</h1>
         <Swiper
           pagination={{ clickable: true }}
           autoplay={{
@@ -823,14 +799,12 @@ export default function App({ cards }) {
 
       <div className="homeget">
         <div className="homeget_main">
-          <h1 className="homeget_main_h1">
-            Get Leatest Update By Subscribe 0ur Newslater
-          </h1>
-          <button>Shop Now</button>
+          <h1 className="homeget_main_h1">{t("get1")}</h1>
+          <button>{t("btn")}</button>
         </div>
       </div>
       <div className="leatest1">
-        <h1 className="leatest1_h1">Leatest Blog</h1>
+        <h1 className="leatest1_h1">{t("get2")}</h1>
         <div className="leatest">
           {posts1.map((post1) => (
             <div className="leatest_post1" key={post1.id}>

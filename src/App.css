@@ -355,7 +355,7 @@ footer {
   text-decoration-skip-ink: none;
   color: #000000;
 }
-.footer_input_btn{
+.footer_input_btn {
   width: 265px;
   height: 30px;
   padding: 5px;
@@ -425,14 +425,14 @@ footer {
   color: #9da0ae;
   font-size: 18px;
 }
-.footer_pas_main{
+.footer_pas_main {
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
 }
-.pas_right_icon{
+.pas_right_icon {
   width: 30px;
   height: 30px;
   padding: 3px;
@@ -596,9 +596,9 @@ footer {
 }
 
 .dropdown {
+  width: 80px;
   font-family: Inter, sans-serif;
   border-radius: 8px;
-  background-color: white;
   display: none;
   position: absolute;
   top: 100%;
@@ -2217,27 +2217,27 @@ button {
   gap: 20px;
 }
 @media (max-width: 1000px) {
-  .treding_page{
+  .treding_page {
     margin: 0 auto;
     width: 100%;
   }
-  .home_cards_shop111123{
+  .home_cards_shop111123 {
     width: 100%;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .home_cards_shop11112{
+  .home_cards_shop11112 {
     flex-direction: column;
     gap: 0;
     margin: 1px 0;
   }
-  .home_cards_shop1{
+  .home_cards_shop1 {
     width: 80%;
     margin: 0 auto;
   }
-  .home_cards_shop11{
+  .home_cards_shop11 {
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -2994,24 +2994,33 @@ button {
   color: #fb2e86;
 }
 
-
-
-
-
-.home_shop_h1, .home_card111_h1, .about_our h1, .treding_page h1, .home121314_page h1, .topcard h1, .homeget_main_h1, .leatest1_h1 {
+.home_shop_h1,
+.home_card111_h1,
+.about_our h1,
+.treding_page h1,
+.home121314_page h1,
+.topcard h1,
+.homeget_main_h1,
+.leatest1_h1 {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 20px;
 }
 
-.shop_card_main, .our_card, .topcard_main, .leatest_post1 {
+.shop_card_main,
+.our_card,
+.topcard_main,
+.leatest_post1 {
   border-radius: 10px;
   padding: 15px;
   text-align: center;
   transition: transform 0.3s ease;
 }
 
-.shop_card_main:hover, .our_card:hover, .topcard_main:hover, .leatest_post1:hover {
+.shop_card_main:hover,
+.our_card:hover,
+.topcard_main:hover,
+.leatest_post1:hover {
   transform: scale(1.05);
 }
 
@@ -3021,13 +3030,17 @@ button {
   cursor: pointer;
 }
 
-.card_cost p, .card_cost del {
+.card_cost p,
+.card_cost del {
   font-size: 1.2rem;
   margin: 5px;
 }
 
 @media (max-width: 1200px) {
-  .home_cards_shop11, .home_cards_shop11112, .our_cards, .topcard_row {
+  .home_cards_shop11,
+  .home_cards_shop11112,
+  .our_cards,
+  .topcard_row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -3035,7 +3048,10 @@ button {
 }
 
 @media (max-width: 992px) {
-  .home_cards_shop11, .home_cards_shop11112, .our_cards, .topcard_row {
+  .home_cards_shop11,
+  .home_cards_shop11112,
+  .our_cards,
+  .topcard_row {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -3051,7 +3067,10 @@ button {
 }
 
 @media (max-width: 768px) {
-  .home_cards_shop11, .home_cards_shop11112, .our_cards, .topcard_row {
+  .home_cards_shop11,
+  .home_cards_shop11112,
+  .our_cards,
+  .topcard_row {
     grid-template-columns: 1fr;
   }
 
@@ -3067,7 +3086,14 @@ button {
 }
 
 @media (max-width: 576px) {
-  .home_shop_h1, .home_card111_h1, .about_our h1, .treding_page h1, .home121314_page h1, .topcard h1, .homeget_main_h1, .leatest1_h1 {
+  .home_shop_h1,
+  .home_card111_h1,
+  .about_our h1,
+  .treding_page h1,
+  .home121314_page h1,
+  .topcard h1,
+  .homeget_main_h1,
+  .leatest1_h1 {
     font-size: 1.8rem;
   }
 
@@ -3105,4 +3131,117 @@ button {
 .btn_home_cost1 button:hover {
   background-color: #cc5200;
 }
+.dropdown_ich {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+.li button {
+  width: 100px;
+}
+.dropdown_ich button {
+  width: 100px;
+  margin: 5px 0;
+}
+.tillar {
+  display: flex;
+  align-items: start;
+  width: 100%;
+  margin: 0 auto;
+}
+.sdssesfgdsgr{
+  background-color: white;
+}
+.li button {
+  font-family: Josefin Sans;
+  --color: #560bad;
+  font-family: inherit;
+  display: inline-block;
+  width: 8em;
+  height: 2.6em;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+}
 
+.li button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.li button:hover {
+  color: #fff;
+}
+
+.li button:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.li button:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.li button:active:before {
+  background: #3a0ca3;
+  transition: background 0s;
+}
+/* .theme-toggle-btn {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+body.dark {
+  background-color: black;
+  color: white;
+}
+
+.theme-toggle-btn.dark {
+  background-color: #555;
+  color: white;
+}
+body.dark {
+  background-color: black;
+  color: white; 
+}
+
+body.dark .theme-toggle-btn {
+  background-color: #555;
+  color: white;
+}
+
+body.dark h1 {
+  color: white; 
+}
+
+body.dark button {
+  background-color: #444;
+  color: white;
+} */
+
+.dropdovn1{
+  width: 120px;
+}
+.dropdovn1_btn button{
+  width: 100px;
+  margin: 5px 0;
+  background: #FB2E86;
+}
+.dropdovn1 li{
+  width: 120px;
+  list-style: none;
+}
