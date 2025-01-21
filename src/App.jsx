@@ -17,9 +17,9 @@ import Blog from "./Pages/Blog";
 import Shop from "./Pages/Shop";
 import Contact from "./Pages/Contact";
 import Shoping from "./Pages/Shoping";
-import Informations from "./Pages/informations";
+import Informations from "./layout/informations";
 import Faq from "./Pages/Faq";
-import Navbar from "./layout/Navbar";
+// import Navbar from "./layout/Navbar";
 import About from "./Pages/About";
 import CantactUs from "./Pages/CantactUs";
 import Shop1 from "./Pages/Shop1";
@@ -32,13 +32,32 @@ import Home14 from "./Help/Home14";
 import ru from "./Languig/homeru";
 import en from "./Languig/homeen";
 import uz from "./Languig/homeuz";
-
+import Description from "./HelpLink/Description";
+import Info from "./HelpLink/Info";
+import Reviews from "./HelpLink/Reviews";
+import Video from "./HelpLink/Video";
+import Wishlist from "./Pages/wishlist";
+import Order from "./Pages/Order"
 import { Dropdown } from "rsuite";
+import { Toaster, toast } from "react-hot-toast";
+import SearchItem from "./Pages/SearchItem";
 
 const languages = { en, uz, ru };
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [selectedCards, setSelectedCards] = useState([]);
+
+  
+  const handleSelectCard = (item) => {
+    setSelectedCards([...selectedCards, item]);
+    toast.success('Mahsulot Sevimlilar bolimiga qoshildi')
+  };
+
+  const RemoveItem = (index) => {
+    setSelectedCards(selectedCards.filter((item, i) => index !== i));
+  };
+
 
   useEffect(() => {
     const savedMode = localStorage.getItem("darkMode") === "true";
@@ -64,6 +83,7 @@ function App() {
   const t = (key) => languages[language]?.[key] || ` ${key}`;
 
   const headleAdd = (item) => {
+    toast.success('Successfully toasted!')
     setShop((prevShop) => {
       const existingItem = prevShop.find((cartItem) => cartItem.id === item.id);
       if (existingItem) {
@@ -83,9 +103,19 @@ function App() {
     0
   );
 
+
+  const [likedCards, setLikedCards] = useState([]);
+
+  const handleHeartClick = (id) => {
+    setLikedCards((prev) =>
+      prev.includes(id) ? prev.filter((cardId) => cardId !== id) : [...prev, id]
+    );
+  };
+
+
   const routes = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
+      <Route path="/" element={<RootLayout shop={shop} setLanguage={setLanguage} t={t}/>}>
         <Route
           path="/"
           element={
@@ -94,6 +124,9 @@ function App() {
               headleAdd={headleAdd}
               setLanguage={setLanguage}
               t={t}
+              handleHeartClick={handleHeartClick}
+              likedCards={likedCards}
+              handleSelectCard={handleSelectCard} 
             />
           }
         >
@@ -104,9 +137,11 @@ function App() {
 
         <Route
           path="pages"
-          element={<Pages />}
+          element={<Pages 
+            shop={shop}
           totalCost={totalCost}
-          totalCost1={totalCost1}
+          totalCost1={totalCost1}/>}
+        
         />
         <Route path="products" element={<Products />} />
         <Route path="blog" element={<Blog />} />
@@ -118,6 +153,10 @@ function App() {
               headleAdd={headleAdd}
               setLanguage={setLanguage}
               t={t}
+              handleHeartClick={handleHeartClick}
+              likedCards={likedCards}
+              handleSelectCard={handleSelectCard} 
+
             />
           }
         />
@@ -132,7 +171,27 @@ function App() {
             />
           }
         />
-        <Route path="informations/:id" element={<Informations />} />
+        <Route
+          path="informations/:id"
+          element={<Informations setLanguage={setLanguage} t={t}    headleAdd={headleAdd}/>}
+        >
+          <Route
+            path="description"
+            element={<Description setLanguage={setLanguage} t={t} />}
+          />
+          <Route
+            path="info"
+            element={<Info setLanguage={setLanguage} t={t} />}
+          />
+          <Route
+            path="reviews"
+            element={<Reviews setLanguage={setLanguage} t={t} />}
+          />
+          <Route
+            path="video"
+            element={<Video setLanguage={setLanguage} t={t} />}
+          />
+        </Route>
         <Route path="faq" element={<Faq setLanguage={setLanguage} t={t} />} />
         <Route
           path="about"
@@ -141,9 +200,15 @@ function App() {
         <Route path="cantactus" element={<CantactUs />} />
         <Route
           path="shop1"
-          element={<Shop1 cards={cards} headleAdd={headleAdd} />}
+          element={<Shop1 cards={cards} headleAdd={headleAdd} handleHeartClick={handleHeartClick}
+          likedCards={likedCards}
+          handleSelectCard={handleSelectCard} 
+
+          />}
         />
         <Route path="login" element={<Login />} />
+        <Route path="wishlist" element={<Wishlist selectedCards={selectedCards}  RemoveItem={RemoveItem} setLanguage={setLanguage} t={t}/>} />
+        <Route path="order" element={<Order setLanguage={setLanguage} t={t}/>}/>
       </Route>
     )
   );
@@ -174,36 +239,15 @@ function App() {
   return (
     <>
       <div className="App">
-        <Navbar />
+        {/* <SearchItem/> */}
+        <Toaster position="top-center" reverseOrder={true} />
+
+        {/* <Navbar /> */}
         {/* <div className="App">
           <button onClick={toggleTheme} className="theme-toggle-btn">
             {isDarkMode ? "Light Mode" : "Dark Mode"}
           </button>
         </div> */}
-        <div className="tillar">
-          <div className="li">
-            <button className="sdssesfgdsgr" onClick={() => setLanguage("en")}>
-              English
-            </button>
-            <div className="dropdown">
-              <div className="dropdown_ich">
-                <button
-                  className="sdssesfgdsgr"
-                  onClick={() => setLanguage("ru")}
-                >
-                  Русский
-                </button>
-                <button
-                  className="sdssesfgdsgr"
-                  onClick={() => setLanguage("uz")}
-                >
-                  O'zbek
-                </button>
-              </div>
-            </div>
-          </div>
-          {/* <CustomDropdown title={t("shop12")} trigger="click" /> */}
-        </div>
 
         <RouterProvider router={routes} />
       </div>

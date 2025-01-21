@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 
-import Demo1 from "../assets/43.png";
-import Demo2 from "../assets/44.png";
-import Demo3 from "../assets/45.png";
-import Demo4 from "../assets/46.png";
-import Demo5 from "../assets/47.png";
-
-function Pages({ totalCost, totalCost1 }) {
+function Pages({ shop: initialShop, totalCost, totalCost1 }) {
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -19,6 +13,9 @@ function Pages({ totalCost, totalCost1 }) {
     country: "",
     postalCode: "",
   });
+  const [shop, setShop] = useState(initialShop || []);
+  const [caunter, setCaunter] = useState(() => (initialShop || []).map(() => 1));
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,11 +24,11 @@ function Pages({ totalCost, totalCost1 }) {
       [name]: value,
     }));
   };
-
+  const navigate = useNavigate();
   const sendToTelegramBot = async (e) => {
     e.preventDefault();
     const botToken = "7686093249:AAHrIA99271I4_uFTUk-yuehmREMjWcUqsQ";
-    const chatId = "5900769240";
+    const chatId = "5900769240  ";
     const text = `Hekto Demo\n\n😀 Email: ${formData.email}\n📄 First Name: ${formData.firstName}\n📄 Last Name: ${formData.lastName}\n📄 Address: ${formData.address}\n📄 Apartment: ${formData.apartment}\n📄 City: ${formData.city}\n📄 Country: ${formData.country}\n📄 Postal Code: ${formData.postalCode}`;
 
     try {
@@ -44,7 +41,7 @@ function Pages({ totalCost, totalCost1 }) {
           },
           body: JSON.stringify({
             chat_id: chatId,
-            text: text,
+            text,
           }),
         }
       );
@@ -61,6 +58,8 @@ function Pages({ totalCost, totalCost1 }) {
           country: "",
           postalCode: "",
         });
+        navigate("/order");
+
       } else {
         toast.error("Failed to send message.");
       }
@@ -69,6 +68,37 @@ function Pages({ totalCost, totalCost1 }) {
       toast.error("An error occurred. Please try again later.");
     }
   };
+
+  const increment = (index) => {
+    setCaunter((prev) =>
+      prev.map((count, i) => (i === index ? count + 1 : count))
+    );
+  };
+
+  const decrement = (index) => {
+    setCaunter((prev) =>
+      prev.map((count, i) => {
+        if (i === index) {
+          const newCount = count - 1;
+          if (newCount <= 0) {
+            removeItem(index);
+          }
+          return newCount > 0 ? newCount : 0;
+        }
+        return count;
+      })
+    );
+  };
+
+  const removeItem = (index) => {
+    setShop((prev) => prev.filter((_, i) => i !== index));
+    setCaunter((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handelnavigationShop = () =>{
+    toast.success("Contact Informationni to'ldiring!!!");
+
+  }
 
   return (
     <div className="demo">
@@ -162,43 +192,53 @@ function Pages({ totalCost, totalCost1 }) {
                     required
                   />
                 </div>
-                <button type="submit">Continue Shipping</button>
+        <button type="submit">Continue Shipping</button>
               </div>
             </div>
           </form>
         </div>
 
         <div className="demo_right">
-          <div className="demo_right_card">
-            <div className="right_card_img">
-              <div>
-                <img src={Demo1} alt="" />
-              </div>
-              <div>
-                <h3>Ut diam consequat</h3>
-                <p>Color:Brown</p>
-                <p>Size:XL</p>
-              </div>
+        <div className="demo_item1">
+          {shop.length > 0 ? (
+            <div className="demo_items">
+              {shop.map((item, index) => (
+                <div key={index} className="demo_item">
+                  <div className="demo_img">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="demo-item-img"
+                    />
+                  </div>
+                  <div className="demo_divvvvvv">
+                    <div>
+                      <h3>{item.title}</h3>
+                      <input type="color" />
+                      <p>Size: XL</p>
+                    </div>
+                    <div className="demo_cost_caunter">
+                      <div>
+                        <h3>${item.cost}.00</h3>
+                      </div>
+                      <div className="_demo_caunter">
+                        <button onClick={() => increment(index)}>+</button>
+                        <p>{caunter[index]}</p>
+                        <button onClick={() => decrement(index)}>-</button>
+                      </div>
+                      <div>
+                        <h3>${item.cost1}.00</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div>
-              <h3>$32.00</h3>
-            </div>
-          </div>
-          <div className="demo_right_card">
-            <div className="right_card_img">
-              <div>
-                <img src={Demo2} alt="" />
-              </div>
-              <div>
-                <h3>Ut diam consequat</h3>
-                <p>Color:Brown</p>
-                <p>Size:XL</p>
-              </div>
-            </div>
-            <div>
-              <h3>$32.00</h3>
-            </div>
-          </div>
+          ) : (
+            <h1>Hozircha Savat Bo'sh!!!</h1>
+          )}
+        </div>
+
          
           <div className="total_main1">
             <div className="total11">
@@ -217,7 +257,7 @@ function Pages({ totalCost, totalCost1 }) {
                 </p>
               </div>
               <div>
-                <button className="total_btn1">Proceed To Checkout</button>
+                <button onClick={handelnavigationShop} className="total_btn1">Proceed To Checkout</button>
               </div>
             </div>
           </div>

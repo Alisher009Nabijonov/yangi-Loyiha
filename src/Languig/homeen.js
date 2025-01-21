@@ -19,7 +19,7 @@ export default {
   kata3:
     "Reinforced with double wood dowels, glue, screw - nails cornerblocks and machine nails blocks and machine nails",
   kata4: "Arms, backs and seats are structurally reinforced",
-  kata5: "Add To Cart",
+  kata5: "Shop Now",
   kata6: "B&B Italian Sofa ",
   treding1: "Trending Products",
   treding2: "Discount Item",
@@ -68,6 +68,18 @@ export default {
   shop9: "Modern Bathroom Furniture",
   shop10: "Mirror Cabinet",
   shop11: "Luxurious Pouf",
-  shop12: "Language"
-
+  shop12: "Language",
+  info1: "Description",
+  info2: "Additional Info",
+  info3: "Reviews",
+  info4: "Video",
+  info5: "Varius tempor.",
+  info6: "Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum. Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius proin sed urna, egestas consequat laoreet diam tincidunt. Magna eget faucibus cras justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .",
+  info7: "More details",
+  info8: "Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .",
+  order1: "Order Completed",
+  order2: "Your Order Is Completed! ",
+  order3: "Thank you for your order! Your order is being processed and will be completed within 3-6hours. You will receive an email confirmation when your order is completed.",
+  order4: "Continue Shopping",
+  wishlist1: "No favorite products yet",
 };

@@ -19,7 +19,7 @@ export default {
   kata3:
     "Укреплен двойными деревянными штифтами, клеем, шурупами - гвоздями, угловыми блоками и блоками с машинными гвоздями и машинными гвоздями.",
   kata4: "Подлокотники, спинки и сиденья структурно усилены",
-  kata5: "Добавить на карту",
+  kata5: "Купить сейчас",
   kata6: "B&B итальянский диван",
   treding1: "Трендовые продукты",
   treding2: "Товар со скидкой",
@@ -68,5 +68,18 @@ export default {
   shop9: "Современная мебель для ванной",
   shop10: "Шкаф с зеркалом",
   shop11: "Роскошный пуф",
-  shop12: "Язик"  
+  shop12: "Язик",
+  info1: "Описание",
+  info2: "Дополнительная информация",
+  info3: "Отзывы",
+  info4: "Видео",
+  info5: "Varius tempor.",
+  info6: "Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum. Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius proin sed urna, egestas consequat laoreet diam tincidunt. Magna eget faucibus cras justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .",
+  info7: "Подробнее",
+  info8: "Aliquam dis vulputate vulputate целочисленный сагиттис. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Да, масса виверр.",
+  order1: "Заказ выполнен",
+  order2: "Ваш заказ выполнен!",
+  order3: "Спасибо за ваш заказ! Ваш заказ обрабатывается и будет выполнен в течение 3-6 часов. Вы получите подтверждение по электронной почте, когда ваш заказ будет выполнен.",
+  order4: "Продолжить покупки",  
+  wishlist1: "Еще нет любимых продуктов"
 };

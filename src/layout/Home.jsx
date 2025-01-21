@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { FaShoppingCart, FaHeart, FaSearchPlus } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
 import { FaPencil } from "react-icons/fa6";
 import { FaCalendarAlt } from "react-icons/fa";
 
@@ -32,16 +31,18 @@ import "swiper/css/autoplay";
 import "swiper/css/pagination";
 import HomeImg1 from "../assets/2.png";
 import { Pagination, Autoplay } from "swiper/modules";
+import { NavLink, Outlet } from "react-router-dom";
 
-
-export default function App({ cards, t, setLanguage }) {
-  const [likedCards, setLikedCards] = useState([]);
-
-  const handleHeartClick = (id) => {
-    setLikedCards((prev) =>
-      prev.includes(id) ? prev.filter((cardId) => cardId !== id) : [...prev, id]
-    );
-  };
+export default function App({
+  cards,
+  headleAdd,
+  t,
+  setLanguage,
+  handleHeartClick,
+  likedCards,
+  handleSelectCard,
+}) {
+  // const [imgrang, setImgrang] = useState({home_kata1});
 
   const pagination = {
     clickable: true,
@@ -224,7 +225,6 @@ export default function App({ cards, t, setLanguage }) {
 
   return (
     <>
-    
       <Swiper
         pagination={pagination}
         autoplay={{
@@ -240,7 +240,9 @@ export default function App({ cards, t, setLanguage }) {
               <h3>{t("greeting")}</h3>
               <h1>{t("welcome")}</h1>
               <p>{t("changeLanguage")}</p>
-              <button>{t("btn")}</button>
+              <NavLink to="shoping">
+                <button>{t("btn")}</button>
+              </NavLink>
             </div>
             <div className="banner_right">
               <img src={HomeImg1} alt="HOMEIMG1" />
@@ -253,7 +255,9 @@ export default function App({ cards, t, setLanguage }) {
               <h3>{t("greeting")}</h3>
               <h1>{t("welcome")}</h1>
               <p>{t("changeLanguage")}</p>
-              <button>{t("btn")}</button>
+              <NavLink to="shoping">
+                <button>{t("btn")}</button>
+              </NavLink>
             </div>
             <div className="banner_right">
               <img src={HomeImg1} alt="HOMEIMG1" />
@@ -266,7 +270,9 @@ export default function App({ cards, t, setLanguage }) {
               <h3>{t("greeting")}</h3>
               <h1>{t("welcome")}</h1>
               <p>{t("changeLanguage")}</p>
-              <button>{t("btn")}</button>
+              <NavLink to="shoping">
+                <button>{t("btn")}</button>
+              </NavLink>
             </div>
             <div className="banner_right">
               {/* <img src={HomeImg1} alt="HOMEIMG1" /> */}
@@ -303,7 +309,7 @@ export default function App({ cards, t, setLanguage }) {
                         transition: "color 0.3s ease-in-out",
                       }}
                     >
-                      <FaHeart />
+                      <FaHeart onClick={() => handleSelectCard(item)} />
                     </div>
                     <div>
                       <NavLink to={`/informations/${item.id}`}>
@@ -343,7 +349,7 @@ export default function App({ cards, t, setLanguage }) {
                         transition: "color 0.3s ease-in-out",
                       }}
                     >
-                      <FaHeart />
+                      <FaHeart onClick={() => handleSelectCard(item)} />
                     </div>
                     <div>
                       <NavLink to={`/informations/${item.id}`}>
@@ -389,7 +395,7 @@ export default function App({ cards, t, setLanguage }) {
                         transition: "color 0.3s ease-in-out",
                       }}
                     >
-                      <FaHeart />
+                      <FaHeart onClick={() => handleSelectCard(item)} />
                     </div>
                     <div>
                       <NavLink to={`/informations/${item.id}`}>
@@ -442,7 +448,7 @@ export default function App({ cards, t, setLanguage }) {
                     transition: "color 0.3s ease-in-out",
                   }}
                 >
-                  <FaHeart />
+                  <FaHeart onClick={() => handleSelectCard(item)} />
                 </div>
                 <div>
                   <NavLink to={`/informations/${item.id}`}>
@@ -480,7 +486,7 @@ export default function App({ cards, t, setLanguage }) {
                     transition: "color 0.3s ease-in-out",
                   }}
                 >
-                  <FaHeart />
+                  <FaHeart onClick={() => handleSelectCard(item)} />
                 </div>
                 <div>
                   <NavLink to={`/informations/${item.id}`}>
@@ -548,7 +554,9 @@ export default function App({ cards, t, setLanguage }) {
               <p>{t("kata4")}</p>
             </div>
             <div className="btn_home_cost1">
-              <button>{t("kata5")}</button>
+              <NavLink to="/shoping">
+                <button>{t("kata5")}</button>
+              </NavLink>
               <div>
                 <h3>{t("kata6")}</h3>
                 <p>$32.00</p>
@@ -579,7 +587,7 @@ export default function App({ cards, t, setLanguage }) {
                     transition: "color 0.3s ease-in-out",
                   }}
                 >
-                  <FaHeart />
+                  <FaHeart onClick={() => handleSelectCard(item)} />
                 </div>
                 <div>
                   <NavLink to={`/informations/${item.id}`}>
@@ -666,7 +674,7 @@ export default function App({ cards, t, setLanguage }) {
         </div>
 
         {isModalOpen && selectedProduct && (
-          <div className="modal">
+          <div className="modal" onClick={closeModal}>
             <div className="modal_content">
               <button className="close_modal" onClick={closeModal}>
                 X
@@ -674,25 +682,25 @@ export default function App({ cards, t, setLanguage }) {
               <img src={selectedProduct.image} alt={selectedProduct.title} />
               <h1>{selectedProduct.title}</h1>
               <h3>{selectedProduct.price}</h3>
-              <div className="modal_icon">
+              {/* <div className="modal_icon">
                 <h1>
                   <FaShoppingCart />
                 </h1>
                 <h1>
                   {" "}
-                  <FaHeart
-                    onClick={() => handleHeartClick(offerProducts.id)}
-                    style={{
-                      cursor: "pointer",
-                      color: likedCards.includes(offerProducts.id)
-                        ? "red"
-                        : "black",
-                      fontSize: "24px",
-                      transition: "color 0.3s ease-in-out",
-                    }}
-                  />
+                  <div
+                  onClick={() => handleHeartClick(item.id)}
+                  style={{
+                    cursor: "pointer",
+                    color: likedCards.includes(item.id) ? "red" : "black",
+                    fontSize: "24px",
+                    transition: "color 0.3s ease-in-out",
+                  }}
+                >
+                  <FaHeart  onClick={() => handleSelectCard(item)}/>
+                </div>
                 </h1>
-              </div>
+              </div> */}
             </div>
           </div>
         )}
@@ -742,8 +750,8 @@ export default function App({ cards, t, setLanguage }) {
           <NavLink to="/home14">{t("link7")}</NavLink>
         </div>
       </div>
-      <Outlet />
 
+      <Outlet />
       <div className="topcard">
         <h1>{t("top1")}</h1>
         <Swiper
@@ -800,7 +808,9 @@ export default function App({ cards, t, setLanguage }) {
       <div className="homeget">
         <div className="homeget_main">
           <h1 className="homeget_main_h1">{t("get1")}</h1>
-          <button>{t("btn")}</button>
+          <NavLink to="/shoping">
+            <button>{t("btn")}</button>
+          </NavLink>
         </div>
       </div>
       <div className="leatest1">

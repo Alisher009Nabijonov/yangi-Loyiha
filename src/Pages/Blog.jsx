@@ -312,7 +312,7 @@ export default function App() {
               </div>
 
               {isModalOpen && selectedProduct && (
-                <div className="modal">
+                <div className="modal" onClick={closeModal}>
                   <div className="modal_content">
                     <button className="close_modal" onClick={closeModal}>
                       X
@@ -323,7 +323,7 @@ export default function App() {
                     />
                     <h1>{selectedProduct.title}</h1>
                     <h3>{selectedProduct.price}</h3>
-                    <div className="modal_icon">
+                    {/* <div className="modal_icon">
                       <h1>
                         <FaShoppingCart />
                       </h1>
@@ -341,7 +341,7 @@ export default function App() {
                           }}
                         />
                       </h1>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               )}

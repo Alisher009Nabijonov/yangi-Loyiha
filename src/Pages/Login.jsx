@@ -101,7 +101,7 @@ const Login = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit">Sign In</button>
+              <button type="submit">Login</button>
             </form>
             <div className="login_btns">
               <button onClick={handleEmailSignUp} className="signup_btn1">

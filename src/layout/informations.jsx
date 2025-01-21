@@ -8,7 +8,7 @@ import { FaTwitter } from "react-icons/fa";
 
 import { cards } from "../Malumotlar";
 
-const informations = () => {
+const informations = ({ t, setLanguage, headleAdd}) => {
   const { id } = useParams();
 
   const product = cards.find((pro) => pro.id == id);
@@ -56,12 +56,22 @@ const informations = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
             tellus porttitor purus, et volutpat sit.
           </p>
-          <button className="information_btn1">Add To cart <CiHeart/></button>
+          <button className="information_btn1" onClick={() => headleAdd(item)}>Add To cart <CiHeart/></button>
           <h2 className="catigoriy_info">Categories:</h2>
           <h2 className="catigoriy_info">Tags</h2>
           <h2 className="catigoriy_info">Share</h2>
         </div>
       </div>
+      
+       <div className="informaton_navlink">
+        <div className="nav_link_link">
+          <NavLink to='description'>{t("info1")}</NavLink>
+          <NavLink to='info'>{t("info2")}</NavLink>
+          <NavLink to='reviews'>{t("info3")}</NavLink>
+          <NavLink to='video'>{t("info4")}</NavLink>
+        </div>
+       </div>
+    <Outlet/>
     </div>
   );
 };

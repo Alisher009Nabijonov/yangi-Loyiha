@@ -6,22 +6,17 @@ import { FaBarsProgress } from "react-icons/fa6";
 import { CgMenuGridO } from "react-icons/cg";
 import Ohir1 from "../assets/15.png";
 
-function Shop({ cards, headleAdd }) {
+function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard  }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
-  const [likedCards, setLikedCards] = useState([]);
-  const [filter, setFilter] = useState("all");
 
-  const handleHeartClick = (id) => {
-    setLikedCards((prev) =>
-      prev.includes(id) ? prev.filter((cardId) => cardId !== id) : [...prev, id]
-    );
-  };
+  const [filter, setFilter] = useState("all");
 
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
     setSearchTerm(term);
   };
+
 
   const handleSearch1 = (event) => {
     const term1 = event.target.value;
@@ -136,7 +131,7 @@ function Shop({ cards, headleAdd }) {
                       transition: "color 0.3s ease-in-out",
                     }}
                   >
-                    <FaHeart />
+                    <FaHeart  onClick={() => handleSelectCard(item)}/>
                   </div>
                   <div>
                     <NavLink to={`/informations/${item.id}`}>

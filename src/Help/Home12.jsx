@@ -1,6 +1,7 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
 import kreaslo11 from "../assets/kreaslo11.png";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Home12 = () => {
   const Home12 = [
@@ -28,16 +29,33 @@ const Home12 = () => {
             <p>{item.lorem}</p>
             <div className="home12_loremm">
               <div className="home12_lorem1">
-                <p><FaCheck />{item.lorem1}</p>
-                <p><FaCheck />{item.lorem2}</p>
+                <p>
+                  <FaCheck />
+                  {item.lorem1}
+                </p>
+                <p>
+                  <FaCheck />
+                  {item.lorem2}
+                </p>
               </div>
               <div className="home12_lorem1">
-                <p><FaCheck />{item.lorem3}</p>
-                <p><FaCheck />{item.lorem4}</p>
+                <p>
+                  <FaCheck />
+                  {item.lorem3}
+                </p>
+                <p>
+                  <FaCheck />
+                  {item.lorem4}
+                </p>
               </div>
             </div>
-            <button>{item.btn}</button>
+            <NavLink to="/shoping">
+              {" "}
+              <button>{item.btn}</button>
+            </NavLink>
           </div>
+          <Outlet />
+
           <div className="home12_rightt">
             <img src={item.img} alt="" />
           </div>

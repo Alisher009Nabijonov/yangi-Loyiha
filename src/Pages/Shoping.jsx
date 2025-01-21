@@ -80,6 +80,7 @@ function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
             <h1>Hozircha Savat Bo'sh!!!</h1>
           )}
         </div>
+      
         <div className="total_cost">
           <h2 className="total_h2">Cart Totals</h2>
           <div className="total_main">
@@ -99,7 +100,7 @@ function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
                 </p>
               </div>
               <div>
-                <button className="total_btn">Proceed To Checkout</button>
+              <NavLink to="/pages">  <button className="total_btn">Proceed To Checkout</button></NavLink>
               </div>
             </div>
           </div>

@@ -8,17 +8,12 @@ import { CgMenuGridO } from "react-icons/cg";
 
 import { cards } from "../Malumotlar";
 
-function Shop1({ headleAdd }) {
+function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
-  const [likedCards, setLikedCards] = useState([]);
   const [filter, setFilter] = useState("all");
 
-  const handleHeartClick = (id) => {
-    setLikedCards((prev) =>
-      prev.includes(id) ? prev.filter((cardId) => cardId !== id) : [...prev, id]
-    );
-  };
+ 
 
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
@@ -150,7 +145,7 @@ function Shop1({ headleAdd }) {
                           transition: "color 0.3s ease-in-out",
                         }}
                       >
-                        <FaHeart />
+                        <FaHeart  onClick={() => handleSelectCard(item)}/>
                       </div>
                       <div>
                         <NavLink to="/informations">

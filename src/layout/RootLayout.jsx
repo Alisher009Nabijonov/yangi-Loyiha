@@ -8,9 +8,11 @@ import { FaShoppingCart } from "react-icons/fa";
 import { Toaster } from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { BsFillTelephonePlusFill } from "react-icons/bs";
 
-
-function RootLayout() {
+function RootLayout({ t, setLanguage }) {
   let [bars, setBars] = useState("close");
   const toggleBars = () => {
     setBars("open");
@@ -20,6 +22,68 @@ function RootLayout() {
   };
   return (
     <>
+      <div className="navbar">
+        <div className="navbar_main">
+          <div className="navbar_left">
+            <p>
+              <MdEmail /> nabijonov093@gmail.com
+            </p>
+            <p>
+              <a href="tel:+998948895355">
+                <BsFillTelephonePlusFill /> +(998)77 324 30 09{" "}
+              </a>
+
+              {/* */}
+            </p>
+          </div>
+          <div className="navbar_right">
+            {/* <select name="Till" className='til'>
+                            <option value="English">English</option>
+                            <option value="English1">English1</option>
+                            <option value="English1">English1</option>
+                        </select> */}
+            <div className="tillar">
+              <div className="li">
+                <button
+                  className="sdssesfgdsgr"
+                  onClick={() => setLanguage("en")}
+                >
+                  English
+                </button>
+                <div className="dropdown">
+                  <div className="dropdown_ich">
+                    <button
+                      className="sdssesfgdsgr"
+                      onClick={() => setLanguage("ru")}
+                    >
+                      Русский
+                    </button>
+                    <button
+                      className="sdssesfgdsgr"
+                      onClick={() => setLanguage("uz")}
+                    >
+                      O'zbek
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <select name="Davlat" className="davlat">
+              <option value="USD">USD</option>
+              <option value="USD1">USD1</option>
+              <option value="English1">English1</option>
+            </select>
+            <NavLink to="/wishlist" onClick={() => toggleBarsClose()}>
+              Wishlis
+              <FaHeart />
+            </NavLink>
+            <NavLink to="/login" onClick={() => toggleBarsClose()}>
+              Login
+              <FaUser />
+            </NavLink>
+          </div>
+        </div>
+      </div>
       <header>
         <nav className="nav">
           <div>
@@ -29,22 +93,16 @@ function RootLayout() {
             <div className="nav_collect">
               <div className="li">
                 <NavLink to="/">Home</NavLink>
-                <div className="dropdown">
-                  <NavLink to="/faq">Faq</NavLink>
-                </div>
+                <div className="dropdown"></div>
               </div>
-                  <NavLink to="/about">About</NavLink>
-              <NavLink to="/products">Products</NavLink>
+              <NavLink to="/about">About</NavLink>
+              {/* <NavLink to="/products">Products</NavLink> */}
+              <NavLink to="/faq">Faq</NavLink>
               <NavLink to="/blog">Blog</NavLink>
               <NavLink to="/shop">Shop</NavLink>
               <NavLink to="/cantactus">Contact</NavLink>
               <NavLink to="/shoping">
                 <FaShoppingCart />
-              </NavLink>
-              <NavLink to="/login">
-                {" "}
-                Login
-                <FaUser />
               </NavLink>
             </div>
             <i className="nav_bars" onClick={() => toggleBars()}>
@@ -55,41 +113,49 @@ function RootLayout() {
                 x
               </p>
               <div className="li">
-                <NavLink to="/" >Home</NavLink>
+                <NavLink to="/">Home</NavLink>
                 <div className="dropdown">
-                  <NavLink to="/faq" onClick={() => toggleBarsClose()}>Faq</NavLink>
-                  <NavLink to="/about" onClick={() => toggleBarsClose()}>About</NavLink>
-                  <NavLink to="/cantactus" onClick={() => toggleBarsClose()}>Contact Us</NavLink>
+                  {/* <NavLink to="/cantactus" onClick={() => toggleBarsClose()}>
+                    Contact Us
+                    </NavLink> */}
                 </div>
               </div>
               <div className="div_sitbar">
+                <NavLink to="/about" onClick={() => toggleBarsClose()}>
+                  About
+                </NavLink>
+                {/* <div>
+                  <NavLink to="/pages" onClick={() => toggleBarsClose()}>
+                    Pages
+                  </NavLink>
+                </div> */}
                 <div>
-                  <NavLink to="/pages" onClick={() => toggleBarsClose()}>Pages</NavLink>
+                  {/* <NavLink to="/products" onClick={() => toggleBarsClose()}>
+                    Products
+                    </NavLink> */}
+                </div>
+                <NavLink to="/faq" onClick={() => toggleBarsClose()}>
+                  Faq
+                </NavLink>
+                <div>
+                  <NavLink to="/blog" onClick={() => toggleBarsClose()}>
+                    Blog
+                  </NavLink>
                 </div>
                 <div>
-                  <NavLink to="/products" onClick={() => toggleBarsClose()}>Products</NavLink>
+                  <NavLink to="/shop" onClick={() => toggleBarsClose()}>
+                    Shop
+                  </NavLink>
                 </div>
                 <div>
-                  <NavLink to="/blog" onClick={() => toggleBarsClose()}>Blog</NavLink>
-                </div>
-                <div>
-                  <NavLink to="/shop" onClick={() => toggleBarsClose()}>Shop</NavLink>
-                </div>
-                <div>
-                  <NavLink to="/contact" onClick={() => toggleBarsClose()}>Contact</NavLink>
+                  <NavLink to="/cantactus" onClick={() => toggleBarsClose()}>
+                    Contact Us
+                  </NavLink>
                 </div>
                 <div>
                   <NavLink to="/shoping" onClick={() => toggleBarsClose()}>
                     <FaShoppingCart />
                   </NavLink>
-                </div>
-                <div>
-
-                <NavLink to="/login" onClick={() => toggleBarsClose()}>
-                  {" "}
-                  Login
-                  <FaUser />
-                </NavLink>
                 </div>
               </div>
             </div>
@@ -112,8 +178,8 @@ function RootLayout() {
             <div className="footer11">
               <h1>Hekto</h1>
               <div className="footer_input_btn">
-              <input type="text" placeholder="Enter Email Address" />
-              <button>Sign Up</button> 
+                <input type="text" placeholder="Enter Email Address" />
+                <button>Sign Up</button>
               </div>
               <p>Contact Info</p>
               <p>17 Princess Road, London, Greater London NW1 8JR, UK</p>
@@ -149,20 +215,35 @@ function RootLayout() {
       </footer>
       <div className="footer_pas">
         <div className="footer_pas_main">
-        <div className="pas_left">
-          <p>©Webecy - All Rights Reserved</p>
-        </div>
-        <div className="pas_right">
-          <div className="pas_right_icon">
-          <FaFacebookF />
+          <div className="pas_left">
+            <p>©Webecy - All Rights Reserved</p>
           </div>
-          <div className="pas_right_icon">
-          <FaInstagram />
+          <div className="pas_right">
+            <div className="pas_right_icon">
+              <a
+                href="https://www.instagram.com/nabijonov_5355?igsh=MTBlMDdkbnd4ZHYzcA=="
+                target="_blank"
+              >
+                <FaFacebookF />
+              </a>
+            </div>
+            <div className="pas_right_icon">
+              <a
+                href="https://www.instagram.com/nabijonov_5355?igsh=MTBlMDdkbnd4ZHYzcA=="
+                target="_blank"
+              >
+                <FaInstagram />
+              </a>
+            </div>
+            <div className="pas_right_icon">
+              <a
+                href="https://www.instagram.com/nabijonov_5355?igsh=MTBlMDdkbnd4ZHYzcA=="
+                target="_blank"
+              >
+                <FaTwitter />
+              </a>
+            </div>
           </div>
-          <div className="pas_right_icon">
-          <FaTwitter />
-          </div>
-        </div>
         </div>
       </div>
     </>
