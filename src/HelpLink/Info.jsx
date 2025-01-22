@@ -1,7 +1,7 @@
 import React from "react";
 import Svg from "../assets/info_svg.svg";
 
-const Info = ({ t, setLanguage}) => {
+const Info = ({ t, setLanguage }) => {
   return (
     <div className="info1234567">
       <div className="info12345">
@@ -13,34 +13,59 @@ const Info = ({ t, setLanguage}) => {
           consectetur neque, elit, aliquet. Non varius proin sed urna, egestas
           consequat laoreet diam tincidunt. Magna eget faucibus cras justo,
           tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla
-          
         </p>
         <h1>More details</h1>
         <div className="info12345_pas1">
-          <img src={Svg} alt="" />
-          <p>
-            Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam
-            arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc
-            nec. Dui, massa viverr .
-          </p>
+          <details>
+            <summary className="read_morea">
+              <img src={Svg} alt="" />
+              <p>
+                Aliquam dis vulputate vulputate integer sagittis. Faucibus ds
+                diam arcu, nulla lobortis justo netus dis. Eu in fringilla
+                vulputate nunc nec. Dui, massa viverr .
+              </p>
+            </summary>
+            <p>
+              Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam
+              arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
+              nunc nec. Dui, massa viverr .
+            </p>
+          </details>
         </div>{" "}
         <div className="info12345_pas1">
-          <img src={Svg} alt="" />
-          <p>
-            Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam
-            arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc
-            nec. Dui, massa viverr .
-          </p>
+          <details>
+            <summary className="read_morea">
+              <img src={Svg} alt="" />
+              <p>
+                Aliquam dis vulputate vulputate integer sagittis. Faucibus ds
+                diam arcu, nulla lobortis justo netus dis. Eu in fringilla
+                vulputate nunc nec. Dui, massa viverr .
+              </p>
+            </summary>
+            <p>
+              Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam
+              arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
+              nunc nec. Dui, massa viverr .
+            </p>
+          </details>
         </div>{" "}
         <div className="info12345_pas1">
-          <img src={Svg} alt="" />
-          <p>
-            Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam
-            arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc
-            nec. Dui, massa viverr .
-          </p>
+          <details>
+            <summary className="read_morea">
+              <img src={Svg} alt="" />
+              <p>
+                Aliquam dis vulputate vulputate integer sagittis. Faucibus ds
+                diam arcu, nulla lobortis justo netus dis. Eu in fringilla
+                vulputate nunc nec. Dui, massa viverr .
+              </p>
+            </summary>
+            <p>
+              Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam
+              arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
+              nunc nec. Dui, massa viverr .
+            </p>
+          </details>
         </div>{" "}
-      
       </div>
     </div>
   );

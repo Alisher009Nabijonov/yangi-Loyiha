@@ -27,16 +27,38 @@ const Reviews = ({ t, setLanguage}) => {
           </p>
         </div>{" "} */}
         <div className="info12345_pas1">
-          <img src={Svg} alt="" />
-          <p>
-         {t("info8")}
-        </p>
+        <details>
+            <summary className="read_morea">
+              <img src={Svg} alt="" />
+              <p>
+                Aliquam dis vulputate vulputate integer sagittis. Faucibus ds
+                diam arcu, nulla lobortis justo netus dis. Eu in fringilla
+                vulputate nunc nec. Dui, massa viverr .
+              </p>
+            </summary>
+            <p>
+              Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam
+              arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
+              nunc nec. Dui, massa viverr .
+            </p>
+          </details>
         </div>{" "}
         <div className="info12345_pas1">
-          <img src={Svg} alt="" />
-          <p>
-         {t("info8")}
-        </p>
+        <details>
+            <summary className="read_morea">
+              <img src={Svg} alt="" />
+              <p>
+                Aliquam dis vulputate vulputate integer sagittis. Faucibus ds
+                diam arcu, nulla lobortis justo netus dis. Eu in fringilla
+                vulputate nunc nec. Dui, massa viverr .
+              </p>
+            </summary>
+            <p>
+              Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam
+              arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
+              nunc nec. Dui, massa viverr .
+            </p>
+          </details>
         </div>
       </div>
     </div>

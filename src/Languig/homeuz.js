@@ -82,4 +82,11 @@ export default {
   order3: "Buyurtmangiz uchun rahmat! Buyurtmangiz qayta ishlanmoqda va 3-6 soat ichida bajariladi. Buyurtma tugallangandan so'ng sizga elektron pochta xabari keladi.",
   order4: "Xarid qilishda davom eting",
   wishlist1: "Hali sevimli mahsulot yo'q",
+  nav1: "Uy",
+  nav2: "Haqida",
+  nav3: "TSS",
+  nav4: "Blog",
+  nav5: "Do'kon",
+  nav6: "Aloqa",
+  nav7: "Hekto",
 };

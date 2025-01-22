@@ -12,7 +12,16 @@ import { FaHeart } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { BsFillTelephonePlusFill } from "react-icons/bs";
 
-function RootLayout({ t, setLanguage }) {
+function RootLayout({
+  t,
+  setLanguage,
+  language,
+  filteredCards,
+  setSearchQuery,
+  searchQuery,
+  shop,
+  selectedCards,
+}) {
   let [bars, setBars] = useState("close");
   const toggleBars = () => {
     setBars("open");
@@ -32,78 +41,68 @@ function RootLayout({ t, setLanguage }) {
               <a href="tel:+998948895355">
                 <BsFillTelephonePlusFill /> +(998)77 324 30 09{" "}
               </a>
-
-              {/* */}
             </p>
           </div>
           <div className="navbar_right">
-            {/* <select name="Till" className='til'>
-                            <option value="English">English</option>
-                            <option value="English1">English1</option>
-                            <option value="English1">English1</option>
-                        </select> */}
-            <div className="tillar">
-              <div className="li">
-                <button
-                  className="sdssesfgdsgr"
-                  onClick={() => setLanguage("en")}
-                >
-                  English
-                </button>
-                <div className="dropdown">
-                  <div className="dropdown_ich">
-                    <button
-                      className="sdssesfgdsgr"
-                      onClick={() => setLanguage("ru")}
-                    >
-                      Русский
-                    </button>
-                    <button
-                      className="sdssesfgdsgr"
-                      onClick={() => setLanguage("uz")}
-                    >
-                      O'zbek
-                    </button>
-                  </div>
+            <div className="nav_item_wish_til_dav_login">
+              <div className="tillar">
+                <div className="language_selector">
+                  <select
+                    className="language_dropdown"
+                    value={language}
+                    onChange={(e) => setLanguage(e.target.value)}
+                  >
+                    <option value="en">English</option>
+                    <option value="ru">Русский</option>
+                    <option value="uz">O'zbek</option>
+                  </select>
                 </div>
               </div>
+              <div className="som_selector">
+                <select name="Davlat" className="davlat">
+                  <option value="USD">USD</option>
+                  <option value="USD1">USD1</option>
+                  <option value="English1">English1</option>
+                </select>
+              </div>
             </div>
-            <select name="Davlat" className="davlat">
-              <option value="USD">USD</option>
-              <option value="USD1">USD1</option>
-              <option value="English1">English1</option>
-            </select>
-            <NavLink to="/wishlist" onClick={() => toggleBarsClose()}>
-              Wishlis
-              <FaHeart />
-            </NavLink>
-            <NavLink to="/login" onClick={() => toggleBarsClose()}>
-              Login
-              <FaUser />
-            </NavLink>
+            <div className="nav_item_wish_til_dav_login">
+              <NavLink to="/wishlist" onClick={() => toggleBarsClose()}>
+                Wishlis
+                <FaHeart />
+              </NavLink>
+              <div className="caunter_wishlist">
+              <p>{selectedCards.length}</p>
+              </div>
+              <NavLink to="/login" onClick={() => toggleBarsClose()}>
+                Login
+                <FaUser />
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>
       <header>
         <nav className="nav">
           <div>
-            <h1 className="nav_h1">Hekto</h1>
+            <h1 className="nav_h1">{t("nav7")}</h1>
           </div>
           <div className="nav_right">
             <div className="nav_collect">
               <div className="li">
-                <NavLink to="/">Home</NavLink>
-                <div className="dropdown"></div>
+                <NavLink to="/">{t("nav1")}</NavLink>
               </div>
-              <NavLink to="/about">About</NavLink>
-              {/* <NavLink to="/products">Products</NavLink> */}
-              <NavLink to="/faq">Faq</NavLink>
-              <NavLink to="/blog">Blog</NavLink>
-              <NavLink to="/shop">Shop</NavLink>
-              <NavLink to="/cantactus">Contact</NavLink>
+              <NavLink to="/about">{t("nav2")}</NavLink>
+              <NavLink to="/faq">{t("nav3")}</NavLink>
+              <NavLink to="/blog">{t("nav4")}</NavLink>
+              <NavLink to="/shop">{t("nav5")}</NavLink>
+              <NavLink to="/cantactus">{t("nav6")}</NavLink>
               <NavLink to="/shoping">
                 <FaShoppingCart />
               </NavLink>
+              <div className="caunter_shoping_length">
+                <p>{shop.length}</p>
+              </div>
             </div>
             <i className="nav_bars" onClick={() => toggleBars()}>
               <FaBarsStaggered />
@@ -113,43 +112,32 @@ function RootLayout({ t, setLanguage }) {
                 x
               </p>
               <div className="li">
-                <NavLink to="/">Home</NavLink>
-                <div className="dropdown">
-                  {/* <NavLink to="/cantactus" onClick={() => toggleBarsClose()}>
-                    Contact Us
-                    </NavLink> */}
-                </div>
+                <NavLink to="/" onClick={() => toggleBarsClose()}>
+                  {t("nav1")}
+                </NavLink>
+                <div className="dropdown"></div>
               </div>
               <div className="div_sitbar">
                 <NavLink to="/about" onClick={() => toggleBarsClose()}>
-                  About
+                  {t("nav2")}
                 </NavLink>
-                {/* <div>
-                  <NavLink to="/pages" onClick={() => toggleBarsClose()}>
-                    Pages
-                  </NavLink>
-                </div> */}
-                <div>
-                  {/* <NavLink to="/products" onClick={() => toggleBarsClose()}>
-                    Products
-                    </NavLink> */}
-                </div>
+                <div></div>
                 <NavLink to="/faq" onClick={() => toggleBarsClose()}>
-                  Faq
+                  {t("nav3")}
                 </NavLink>
                 <div>
                   <NavLink to="/blog" onClick={() => toggleBarsClose()}>
-                    Blog
+                    {t("nav4")}
                   </NavLink>
                 </div>
                 <div>
                   <NavLink to="/shop" onClick={() => toggleBarsClose()}>
-                    Shop
+                    {t("nav5")}
                   </NavLink>
                 </div>
                 <div>
                   <NavLink to="/cantactus" onClick={() => toggleBarsClose()}>
-                    Contact Us
+                    {t("nav6")}
                   </NavLink>
                 </div>
                 <div>
@@ -161,13 +149,22 @@ function RootLayout({ t, setLanguage }) {
             </div>
           </div>
           <div className="nav_ohir">
-            <input type="search" pmplaceholder="Search..." />
+            <NavLink to="/searchitem12">
+              {" "}
+              <input
+                type="search"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </NavLink>
             <button>
               <FaSearch />
             </button>
           </div>
         </nav>
       </header>
+
       <main>
         <Toaster />
         <Outlet />

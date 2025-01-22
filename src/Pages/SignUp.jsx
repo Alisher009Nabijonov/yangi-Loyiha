@@ -74,7 +74,7 @@ const Login = () => {
           <div className="login1_pas">
             <NavLink to="/home">Home.</NavLink>
             <NavLink to="/pages">Pages.</NavLink>
-            <p>My Account</p>
+            <p>My Account Sign Up</p>
           </div>
         </div>
       </div>
@@ -82,9 +82,10 @@ const Login = () => {
         <Toaster />
         <div className="login_cards">
           <div className="login_card">
-            <h1>Login</h1>
+            <h1>Sign Up</h1>
             <p>Please login using account details below.</p>
             <form onSubmit={handleEmailLogin}>
+                <input type="text" placeholder="Name" />
               <input
                 type="email"
                 placeholder="Email Address"
@@ -101,21 +102,12 @@ const Login = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit">Login</button>
             </form>
-            <button onClick={handleGoogleLogin} className="google_login_btn">
-              Google
-            </button>
-            <div className="login_btns">
+            <div className="login_btns11">
               <NavLink to="/signup">
-              <div className="aliklar">
-
-                <button
-                  className="signup_btn1"
-                >
-                  Create Account
+                <button onClick={handleEmailSignUp} className="signup_btn111">
+                  Sign Up
                 </button>
-              </div>
               </NavLink>
             </div>
           </div>

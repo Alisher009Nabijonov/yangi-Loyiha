@@ -26,7 +26,7 @@ const Order = ({ t, setLanguage }) => {
             <FaCheck />
             <h1>{t("order2")}</h1>
             <p>{t("order3")}</p>
-            <button>{t("order4")}</button>
+            <NavLink to='/shop'><button>{t("order4")}</button></NavLink>
           </div>
 
         </div>

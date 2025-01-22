@@ -82,4 +82,11 @@ export default {
   order3: "Thank you for your order! Your order is being processed and will be completed within 3-6hours. You will receive an email confirmation when your order is completed.",
   order4: "Continue Shopping",
   wishlist1: "No favorite products yet",
+  nav1: "Home",
+  nav2: "About",
+  nav3: "Faq",
+  nav4: "Blog",
+  nav5: "Shop",
+  nav6: "Contact",
+  nav7: "Hekto",
 };

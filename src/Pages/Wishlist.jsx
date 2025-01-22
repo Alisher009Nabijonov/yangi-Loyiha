@@ -14,7 +14,7 @@ const wishlist = ({ selectedCards, RemoveItem, setLanguage, t }) => {
               className="wishlist_cardDivImg"
             />
             <h2>{item.title}</h2>
-            <p>{item.cost}</p>
+            <p>${item.cost}.00</p>
             <button
               className="wishlist_deleteBtn"
               onClick={() => RemoveItem(index)}

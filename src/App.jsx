@@ -37,27 +37,33 @@ import Info from "./HelpLink/Info";
 import Reviews from "./HelpLink/Reviews";
 import Video from "./HelpLink/Video";
 import Wishlist from "./Pages/wishlist";
-import Order from "./Pages/Order"
+import Order from "./Pages/Order";
 import { Dropdown } from "rsuite";
 import { Toaster, toast } from "react-hot-toast";
 import SearchItem from "./Pages/SearchItem";
+import SearchItem12 from "./Pages/SearchItem12";
+import SignUp from "./Pages/SignUp"
 
 const languages = { en, uz, ru };
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Filter cards by title based on the search query
+  const filteredCards = cards.filter((card) =>
+    card.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedCards, setSelectedCards] = useState([]);
 
-  
   const handleSelectCard = (item) => {
     setSelectedCards([...selectedCards, item]);
-    toast.success('Mahsulot Sevimlilar bolimiga qoshildi')
+    toast.success("Mahsulot Sevimlilar bolimiga qoshildi");
   };
 
   const RemoveItem = (index) => {
     setSelectedCards(selectedCards.filter((item, i) => index !== i));
   };
-
 
   useEffect(() => {
     const savedMode = localStorage.getItem("darkMode") === "true";
@@ -78,12 +84,14 @@ function App() {
   };
   const [shop, setShop] = useState([]);
 
+  // const [language, setLanguage] = useState("en");
   const [language, setLanguage] = useState("en");
 
+  // const t = (key) => languages[language]?.[key] || ` ${key}`;
   const t = (key) => languages[language]?.[key] || ` ${key}`;
 
   const headleAdd = (item) => {
-    toast.success('Successfully toasted!')
+    toast.success("Mahsulot Savatchaga saqlandi!");
     setShop((prevShop) => {
       const existingItem = prevShop.find((cartItem) => cartItem.id === item.id);
       if (existingItem) {
@@ -93,6 +101,7 @@ function App() {
             : cartItem
         );
       } else {
+
         return [...prevShop, { ...item, quantity: 1 }];
       }
     });
@@ -103,7 +112,6 @@ function App() {
     0
   );
 
-
   const [likedCards, setLikedCards] = useState([]);
 
   const handleHeartClick = (id) => {
@@ -112,10 +120,23 @@ function App() {
     );
   };
 
-
   const routes = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout shop={shop} setLanguage={setLanguage} t={t}/>}>
+      <Route
+        path="/"
+        element={
+          <RootLayout
+            shop={shop}
+            setLanguage={setLanguage}
+            t={t}
+            language={language}
+            setSearchQuery={setSearchQuery}
+            filteredCards={filteredCards}
+            searchQuery={searchQuery}
+            selectedCards={selectedCards}
+          />
+        }
+      >
         <Route
           path="/"
           element={
@@ -126,7 +147,7 @@ function App() {
               t={t}
               handleHeartClick={handleHeartClick}
               likedCards={likedCards}
-              handleSelectCard={handleSelectCard} 
+              handleSelectCard={handleSelectCard}
             />
           }
         >
@@ -137,11 +158,9 @@ function App() {
 
         <Route
           path="pages"
-          element={<Pages 
-            shop={shop}
-          totalCost={totalCost}
-          totalCost1={totalCost1}/>}
-        
+          element={
+            <Pages shop={shop} totalCost={totalCost} totalCost1={totalCost1} />
+          }
         />
         <Route path="products" element={<Products />} />
         <Route path="blog" element={<Blog />} />
@@ -155,8 +174,7 @@ function App() {
               t={t}
               handleHeartClick={handleHeartClick}
               likedCards={likedCards}
-              handleSelectCard={handleSelectCard} 
-
+              handleSelectCard={handleSelectCard}
             />
           }
         />
@@ -173,7 +191,13 @@ function App() {
         />
         <Route
           path="informations/:id"
-          element={<Informations setLanguage={setLanguage} t={t}    headleAdd={headleAdd}/>}
+          element={
+            <Informations
+              setLanguage={setLanguage}
+              t={t}
+              headleAdd={headleAdd}
+            />
+          }
         >
           <Route
             path="description"
@@ -200,15 +224,44 @@ function App() {
         <Route path="cantactus" element={<CantactUs />} />
         <Route
           path="shop1"
-          element={<Shop1 cards={cards} headleAdd={headleAdd} handleHeartClick={handleHeartClick}
-          likedCards={likedCards}
-          handleSelectCard={handleSelectCard} 
-
-          />}
+          element={
+            <Shop1
+              cards={cards}
+              headleAdd={headleAdd}
+              handleHeartClick={handleHeartClick}
+              likedCards={likedCards}
+              handleSelectCard={handleSelectCard}
+            />
+          }
         />
         <Route path="login" element={<Login />} />
-        <Route path="wishlist" element={<Wishlist selectedCards={selectedCards}  RemoveItem={RemoveItem} setLanguage={setLanguage} t={t}/>} />
-        <Route path="order" element={<Order setLanguage={setLanguage} t={t}/>}/>
+        <Route
+          path="wishlist"
+          element={
+            <Wishlist
+              selectedCards={selectedCards}
+              RemoveItem={RemoveItem}
+              setLanguage={setLanguage}
+              t={t}
+            />
+          }
+        />
+        <Route
+          path="order"
+          element={<Order setLanguage={setLanguage} t={t} />}
+        />
+        <Route
+          path="searchitem12"
+          element={
+            <SearchItem12
+              headleAdd={headleAdd}
+              setLanguage={setLanguage}
+              t={t}
+              handleHeartClick={handleHeartClick}
+              likedCards={likedCards}
+              handleSelectCard={handleSelectCard}
+              filteredCards={filteredCards}/>}/>
+              <Route path="signup" element={<SignUp/>}/>
       </Route>
     )
   );
@@ -241,7 +294,7 @@ function App() {
       <div className="App">
         {/* <SearchItem/> */}
         <Toaster position="top-center" reverseOrder={true} />
-
+        {/* <SearchItem12/> */}
         {/* <Navbar /> */}
         {/* <div className="App">
           <button onClick={toggleTheme} className="theme-toggle-btn">

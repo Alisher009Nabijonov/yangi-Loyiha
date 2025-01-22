@@ -285,7 +285,7 @@ export default function App() {
                   <div className="ofer_cards_left">
                     {offerProducts.slice(0, 2).map((product) => (
                       <div
-                        className="ofer_caard"
+                        className="ofer_caard1"
                         key={product.id}
                         onClick={() => openModal(product)}
                       >
@@ -298,7 +298,7 @@ export default function App() {
                   <div className="ofer_cards_left">
                     {offerProducts.slice(2).map((product) => (
                       <div
-                        className="ofer_caard"
+                        className="ofer_caard1"
                         key={product.id}
                         onClick={() => openModal(product)}
                       >
@@ -385,12 +385,27 @@ export default function App() {
               <div className="follower">
                 <h2>Follow</h2>
                 <div className="follower_icon">
-                  <FaFacebookF />
+                  <a
+                    href="https://www.instagram.com/nabijonov_5355?igsh=MTBlMDdkbnd4ZHYzcA=="
+                    target="_blank"
+                  >
+                    <FaFacebookF />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/nabijonov_5355?igsh=MTBlMDdkbnd4ZHYzcA=="
+                    target="_blank"
+                  >
                   <FaInstagram />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/nabijonov_5355?igsh=MTBlMDdkbnd4ZHYzcA=="
+                    target="_blank"
+                  >
                   <FaTwitter />
+                  </a>
                 </div>
               </div>
-              <div className="tags">
+              {/* <div className="tags">
                 <h2>Tages</h2>
                 <div className="tags_a">
                   <div>
@@ -403,7 +418,7 @@ export default function App() {
                     <a href="#">Nulla.</a>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <Outlet />
           </div>

@@ -160,9 +160,9 @@ function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard }) {
           )}
         </div>
 
-        <div className="shop_ohir">
+        {/* <div className="shop_ohir">
           <img src={Ohir1} alt="" />
-        </div>
+        </div> */}
       </div>
     </div>
   );

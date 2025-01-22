@@ -44,7 +44,7 @@ const About = ({ t, setLanguage }) => {
           <div className="about_right">
             <h1>{t("about2")}</h1>
             <p>{t("about3")}</p>
-            <button>{t("about4")}</button>
+          <NavLink to='/cantactus'>  <button>{t("about4")}</button></NavLink>
           </div>
         </div>
 

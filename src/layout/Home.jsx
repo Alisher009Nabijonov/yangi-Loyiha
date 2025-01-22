@@ -25,6 +25,8 @@ import top4 from "../assets/top4.png";
 import late1 from "../assets/late.png";
 import late2 from "../assets/late2.png";
 import late3 from "../assets/late3.png";
+import rang1 from "../assets/rang1.png";
+import rang2 from "../assets/rang2.png";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -221,6 +223,18 @@ export default function App({
         post1.id === id ? { ...post1, showMore: !post1.showMore } : post1
       )
     );
+  };
+
+  const [selectedImage, setSelectedImage] = useState(home_kata1);
+
+  const images = {
+    rangli1: home_kata1,
+    rangli2: rang1,
+    rangli3: rang2,
+  };
+
+  const handleImageChange = (key) => {
+    setSelectedImage(images[key]);
   };
 
   return (
@@ -534,7 +548,7 @@ export default function App({
         </div>
       </div>
 
-      <div className="home_kata_page">
+      {/* <div className="home_kata_page">
         <div className="home_kata_page_main">
           <div className="home_kata_page_left">
             <img src={home_kata1} alt="" />
@@ -546,10 +560,56 @@ export default function App({
               <p>{t("kata2")}</p>
             </div>
             <div className="rang_text">
-              <div className="rangli2"></div>
+              <div 
+                
+              className="rangli2"></div>
               <p>{t("kata3")}</p>
             </div>
             <div className="rang_text">
+              <div className="rangli3"></div>
+              <p>{t("kata4")}</p>
+            </div>
+            <div className="btn_home_cost1">
+              <NavLink to="/shoping">
+                <button>{t("kata5")}</button>
+              </NavLink>
+              <div>
+                <h3>{t("kata6")}</h3>
+                <p>$32.00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+      <div className="home_kata_page">
+        <div className="home_kata_page_main">
+          <div className="home_kata_page_left">
+            <img src={selectedImage} alt="Kata Preview" />
+          </div>
+          <div className="home_kata_page_right">
+            <h1>{t("kata1")}</h1>
+            <div
+              className="rang_text"
+              onClick={() => handleImageChange("rangli1")}
+              style={{ cursor: "pointer" }}
+            >
+              <div className="rangli2"></div>
+              <p>{t("kata2")}</p>
+            </div>
+            <div
+              className="rang_text"
+              onClick={() => handleImageChange("rangli2")}
+              style={{ cursor: "pointer" }}
+            >
+              <div className="rangli1"></div>
+              <p>{t("kata3")}</p>
+            </div>
+            <div
+              className="rang_text"
+              onClick={() => handleImageChange("rangli3")}
+              style={{ cursor: "pointer" }}
+            >
               <div className="rangli3"></div>
               <p>{t("kata4")}</p>
             </div>
@@ -596,7 +656,7 @@ export default function App({
                 </div>
               </div>
 
-              <h2>{item.title}</h2>
+              <h2 className="qaley">{item.title}</h2>
 
               <div className="card_cost123">
                 <p>${item.cost}.00</p>
@@ -609,7 +669,7 @@ export default function App({
 
       <div className="home_card80">
         {posts.map((post) => (
-          <div className="blog_post1" key={post.id}>
+          <div className="blog_post11" key={post.id}>
             <div className="blog-content1">
               <p className="blog-meta1">
                 <div className="blog_data1">
@@ -682,13 +742,10 @@ export default function App({
               <img src={selectedProduct.image} alt={selectedProduct.title} />
               <h1>{selectedProduct.title}</h1>
               <h3>{selectedProduct.price}</h3>
-              {/* <div className="modal_icon">
+              <div className="modal_icon">
+                <h1>{/* <FaShoppingCart /> */}</h1>
                 <h1>
-                  <FaShoppingCart />
-                </h1>
-                <h1>
-                  {" "}
-                  <div
+                  {/* <div
                   onClick={() => handleHeartClick(item.id)}
                   style={{
                     cursor: "pointer",
@@ -698,9 +755,9 @@ export default function App({
                   }}
                 >
                   <FaHeart  onClick={() => handleSelectCard(item)}/>
-                </div>
+                </div> */}
                 </h1>
-              </div> */}
+              </div>
             </div>
           </div>
         )}
@@ -769,6 +826,12 @@ export default function App({
                 <div key={item.id} className="topcard_main">
                   <div className="topcard_img">
                     <img src={item.img1} alt={item.title} />
+                    <div className="icon_overlay">
+                      <FaShoppingCart
+                        onClick={() => headleAdd(item)}
+                        className="icon shopping_cart"
+                      />
+                    </div>
                   </div>
                   <h2>{item.title}</h2>
                   <h3>{item.costt}</h3>
@@ -782,6 +845,12 @@ export default function App({
                 <div key={item.id} className="topcard_main">
                   <div className="topcard_img">
                     <img src={item.img1} alt={item.title} />
+                    <div className="icon_overlay">
+                      <FaShoppingCart
+                        onClick={() => headleAdd(item)}
+                        className="icon shopping_cart"
+                      />
+                    </div>
                   </div>
                   <h2>{item.title}</h2>
                   <h3>{item.costt}</h3>
@@ -795,6 +864,12 @@ export default function App({
                 <div key={item.id} className="topcard_main">
                   <div className="topcard_img">
                     <img src={item.img1} alt={item.title} />
+                    <div className="icon_overlay">
+                      <FaShoppingCart
+                        onClick={() => headleAdd(item)}
+                        className="icon shopping_cart"
+                      />
+                    </div>
                   </div>
                   <h2>{item.title}</h2>
                   <h3>{item.costt}</h3>
