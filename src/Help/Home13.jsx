@@ -15,7 +15,7 @@ const Home12 = () => {
       lorem2: "Simple neutral colours.",
       lorem3: "Clear lines and geomatric figures",
       lorem4: "Material expose like metals",
-      btn: "Shop Now",
+      btn: "Shopping",
       img: home_kata1,
     },
   ];
@@ -49,7 +49,7 @@ const Home12 = () => {
                 </p>
               </div>
             </div>
-            <NavLink to="/shoping">
+            <NavLink to="/shop">
               {" "}
               <button>{item.btn}</button>
             </NavLink>

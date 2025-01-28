@@ -6,7 +6,7 @@ import { FaBarsProgress } from "react-icons/fa6";
 import { CgMenuGridO } from "react-icons/cg";
 import Ohir1 from "../assets/15.png";
 
-function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard  }) {
+function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard, t1  }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
 
@@ -141,8 +141,10 @@ function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard
                 </div>
                 <h2>{item.title}</h2>
                 <div className="card_cost">
-                  <p>${item.cost}.00</p>
-                  <del>${item.cost1}.00</del>
+                <p>{t1("dolor1")}</p>
+
+                <del>{t1("dolor2")}</del>
+
                 </div>
               </div>
             ))

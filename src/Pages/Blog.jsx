@@ -33,12 +33,8 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 
 export default function App() {
-  const pagination = {
-    clickable: true,
-    renderBullet: function (index, className) {
-      return '<span class="' + className + '">' + "</span>";
-    },
-  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 3;
 
   const [posts, setPosts] = useState([
     {
@@ -77,6 +73,42 @@ export default function App() {
         "Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
       showMore: false,
     },
+    {
+      id: 4,
+      title: "Mauris at orci non vulputate diam tincidunt nec.",
+      date: "Aug 09 2020",
+      category: "Fashion",
+      image: Blog1,
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum.Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+      extraText:
+        "Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+      showMore: false,
+    },
+    {
+      id: 5,
+      title: "Sit non congue feugiat nisl, mauris amet nisi.",
+      date: "Aug 09 2020",
+      category: "Surf Auxion",
+      image: Blog3,
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum.",
+      extraText:
+        "Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+      showMore: false,
+    },
+    {
+      id: 6,
+      title: "Aenean vitae in aliquam ultricies lectus. Etiam.",
+      date: "Aug 09 2020",
+      category: "Travel",
+      image: Blog2,
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum.",
+      extraText:
+        "Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
+      showMore: false,
+    },
   ]);
 
   const toggleShowMore = (id) => {
@@ -88,7 +120,8 @@ export default function App() {
   };
 
   const [searchText, setSearchText] = useState("");
-
+  const [selectedProduct1, setSelectedProduct1] = useState(null);
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
   const recentPosts = [
     {
       id: 1,
@@ -115,7 +148,8 @@ export default function App() {
       image: blog7,
     },
   ];
-
+  const [selectedProduct2, setSelectedProduct2] = useState(null);
+  const [isModalOpen2, setIsModalOpen2] = useState(false);
   const saleProducts = [
     {
       id: 1,
@@ -181,28 +215,44 @@ export default function App() {
     );
   };
 
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
   return (
     <>
       <div className="blog">
         <div className="blog_main">
-          <div className="shop_title">
-            <h1 className="title_h1">Blog Page</h1>
-            <NavLink to="/">home.</NavLink>
-            <NavLink to="/pages">Pages.</NavLink>
-            <span className="title_span">Blog Page</span>
-          </div>
+        <div className="shop_title">
+          <h1 className="title_h1">Blog Page</h1>
+          <NavLink to="/">home.</NavLink>
+          <NavLink to="/pages">Pages.</NavLink>
+          <span className="title_span">Blog Page</span>
+        </div>
           <div className="blog_pas_katta">
             <div className="blog_pas_left">
               <div className="blog_pas">
-                {posts.map((post) => (
+                {currentPosts.map((post) => (
                   <div className="blog_post" key={post.id}>
                     <img src={post.image} alt={post.title} />
                     <div className="blog-content">
                       <p className="blog-meta">
-                        <div className="blog_data">
-                          <span>{post.category}</span>
-                          <span>{post.date}</span>
-                        </div>
+                        <span>{post.category}</span>
+                        <span>{post.date}</span>
                       </p>
                       <h3>{post.title}</h3>
                       <p>
@@ -221,6 +271,34 @@ export default function App() {
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className="pagination-controls">
+                <button onClick={handlePrev} disabled={currentPage === 1}>
+                  Previous
+                </button>
+                {/* <span>
+                Page {currentPage} of {totalPages}
+              </span> */}
+                <span
+                  className="preve_sapan_number"
+                  onClick={handlePrev}
+                  disabled={currentPage === 1}
+                >
+                  1
+                </span>
+                <span
+                  className="preve_sapan_number"
+                  onClick={handleNext}
+                  disabled={currentPage === totalPages}
+                >
+                  2
+                </span>
+                <button
+                  onClick={handleNext}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </button>
               </div>
             </div>
             <div className="blog_pas_right">
@@ -252,7 +330,7 @@ export default function App() {
               <div className="recent">
                 <h2>Recent Post</h2>
                 {filteredRecentPosts.map((post) => (
-                  <div className="blog_card1" key={post.id}>
+                  <div className="blog_card1" key={post.id}   onClick={() => openModal(post)}>
                     <div>
                       <img src={post.image} alt={post.title} />
                     </div>
@@ -263,11 +341,82 @@ export default function App() {
                   </div>
                 ))}
               </div>
+              {isModalOpen1 && selectedProduct1 && (
+                <div className="modal" onClick={closeModal}>
+                  <div className="modal_content">
+                    <button className="close_modal" onClick={closeModal}>
+                      X
+                    </button>
+                    <img
+                      src={selectedProduct1.image}
+                      alt={selectedProduct1.title}
+                    />
+                    <h3>{selectedProduct1.title}</h3>
+                    <h3>{selectedProduct1.data}</h3>
+                    {/* <div className="modal_icon">
+                      <h1>
+                        <FaShoppingCart />
+                      </h1>
+                      <h1>
+                        {" "}
+                        <FaHeart
+                          onClick={() => handleHeartClick(offerProducts.id)}
+                          style={{
+                            cursor: "pointer",
+                            color: likedCards.includes(offerProducts.id)
+                              ? "red"
+                              : "black",
+                            fontSize: "24px",
+                            transition: "color 0.3s ease-in-out",
+                          }}
+                        />
+                      </h1>
+                    </div> */}
+                  </div>
+                </div>
+              )}
+
+              <style jsx>{`
+                .modal {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: rgba(0, 0, 0, 0.5);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  z-index: 1000;
+                }
+                .modal_content {
+                  width: 350px;
+                  height: 400px;
+                  background: white;
+                  padding: 20px;
+                  border-radius: 10px;
+                  text-align: center;
+                  position: relative;
+                }
+                .close_modal {
+                  position: absolute;
+                  top: 10px;
+                  right: 10px;
+                  border: none;
+                  padding: 5px 10px;
+                  cursor: pointer;
+                }
+                .modal_content img {
+                  width: 100%;
+                  height: auto;
+                }
+              `}</style>
+
 
               <div className="recent">
                 <h2>Sale Product</h2>
                 {filteredSaleProducts.map((product) => (
-                  <div className="blog_card1" key={product.id}>
+                  <div className="blog_card1" key={product.id}  onClick={() => openModal(product)}>
                     <div>
                       <img src={product.image} alt={product.title} />
                     </div>
@@ -278,6 +427,78 @@ export default function App() {
                   </div>
                 ))}
               </div>
+
+              {isModalOpen2 && selectedProduct2 && (
+                <div className="modal" onClick={closeModal}>
+                  <div className="modal_content">
+                    <button className="close_modal" onClick={closeModal}>
+                      X
+                    </button>
+                    <img
+                      src={selectedProduct2.image}
+                      alt={selectedProduct2.title}
+                    />
+                    <h3>{selectedProduct2.title}</h3>
+                    <h3>{selectedProduct2.data}</h3>
+                    {/* <div className="modal_icon">
+                      <h1>
+                        <FaShoppingCart />
+                      </h1>
+                      <h1>
+                        {" "}
+                        <FaHeart
+                          onClick={() => handleHeartClick(offerProducts.id)}
+                          style={{
+                            cursor: "pointer",
+                            color: likedCards.includes(offerProducts.id)
+                              ? "red"
+                              : "black",
+                            fontSize: "24px",
+                            transition: "color 0.3s ease-in-out",
+                          }}
+                        />
+                      </h1>
+                    </div> */}
+                  </div>
+                </div>
+              )}
+
+              <style jsx>{`
+                .modal {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: rgba(0, 0, 0, 0.5);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  z-index: 1000;
+                }
+                .modal_content {
+                  width: 350px;
+                  height: 400px;
+                  background: white;
+                  padding: 20px;
+                  border-radius: 10px;
+                  text-align: center;
+                  position: relative;
+                }
+                .close_modal {
+                  position: absolute;
+                  top: 10px;
+                  right: 10px;
+                  border: none;
+                  padding: 5px 10px;
+                  cursor: pointer;
+                }
+                .modal_content img {
+                  width: 100%;
+                  height: auto;
+                }
+              `}</style>
+
 
               <div className="ofer">
                 <h2>Offer product</h2>
@@ -395,13 +616,13 @@ export default function App() {
                     href="https://www.instagram.com/nabijonov_5355?igsh=MTBlMDdkbnd4ZHYzcA=="
                     target="_blank"
                   >
-                  <FaInstagram />
+                    <FaInstagram />
                   </a>
                   <a
                     href="https://www.instagram.com/nabijonov_5355?igsh=MTBlMDdkbnd4ZHYzcA=="
                     target="_blank"
                   >
-                  <FaTwitter />
+                    <FaTwitter />
                   </a>
                 </div>
               </div>

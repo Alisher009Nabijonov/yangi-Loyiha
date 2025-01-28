@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
@@ -21,7 +21,20 @@ function RootLayout({
   searchQuery,
   shop,
   selectedCards,
+  setLanguage1,
+  language1,
+  selectedCards1,
 }) {
+  const [footerEmail, setFooterEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleSignUpRedirect = () => {
+    if (!footerEmail.trim()) {
+           toast.error("Input maydonini toldiring!!!");
+      return;
+    }
+    navigate("/signup", { state: { email: footerEmail } });
+  };
   let [bars, setBars] = useState("close");
   const toggleBars = () => {
     setBars("open");
@@ -59,25 +72,35 @@ function RootLayout({
                 </div>
               </div>
               <div className="som_selector">
-                <select name="Davlat" className="davlat">
-                  <option value="USD">USD</option>
-                  <option value="USD1">USD1</option>
-                  <option value="English1">English1</option>
+                <select
+                  name="Davlat"
+                  className="davlat"
+                  value={language1}
+                  onChange={(e) => setLanguage1(e.target.value)}
+                >
+                  <option value="dolor">Dolor</option>
+                  <option value="som">Som</option>
                 </select>
               </div>
             </div>
-            <div className="nav_item_wish_til_dav_login">
-              <NavLink to="/wishlist" onClick={() => toggleBarsClose()}>
-                Wishlis
-                <FaHeart />
-              </NavLink>
-              <div className="caunter_wishlist">
-              <p>{selectedCards.length}</p>
+            <div className="yurak">
+              <div className="nav_item_wish_til_dav_login">
+                <NavLink
+                  className="olma"
+                  to="/wishlist"
+                  onClick={() => toggleBarsClose()}
+                >
+                  Wishlis
+                  <FaHeart />
+                </NavLink>
+                <div className="caunter_wishlist">
+                  <p>{selectedCards.length}</p>
+                </div>
+                <NavLink to="/login" onClick={() => toggleBarsClose()}>
+                  Login
+                  <FaUser />
+                </NavLink>
               </div>
-              <NavLink to="/login" onClick={() => toggleBarsClose()}>
-                Login
-                <FaUser />
-              </NavLink>
             </div>
           </div>
         </div>
@@ -144,6 +167,22 @@ function RootLayout({
                   <NavLink to="/shoping" onClick={() => toggleBarsClose()}>
                     <FaShoppingCart />
                   </NavLink>
+                  <div className="caunter_shoping_length">
+                    <p>{shop.length}</p>
+                  </div>
+                </div>
+                <div className="nav_item_wish_til_dav_login">
+                  <NavLink to="/wishlist" onClick={() => toggleBarsClose()}>
+                    Wishlis
+                    <FaHeart />
+                  </NavLink>
+                  <div className="caunter_wishlist">
+                    <p>{selectedCards.length}</p>
+                  </div>
+                  <NavLink to="/login" onClick={() => toggleBarsClose()}>
+                    Login
+                    <FaUser />
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -175,8 +214,13 @@ function RootLayout({
             <div className="footer11">
               <h1>Hekto</h1>
               <div className="footer_input_btn">
-                <input type="text" placeholder="Enter Email Address" />
-                <button>Sign Up</button>
+                <input
+                  type="email"
+                  placeholder="Enter Email Address"
+                  value={footerEmail}
+                  onChange={(e) => setFooterEmail(e.target.value)}
+                />
+                <button onClick={handleSignUpRedirect}>Sign Up</button>
               </div>
               <p>Contact Info</p>
               <p>17 Princess Road, London, Greater London NW1 8JR, UK</p>

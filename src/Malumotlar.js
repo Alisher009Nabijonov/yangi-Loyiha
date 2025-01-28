@@ -59,3 +59,6 @@
     { id: 11, img: Quloqchin2, title: language.shop11, cost: 56.00, cost1: 42.00, Imgs:[ Quloqchin2, quloqchin17, quloqchin16, quloqchin18 ] },
     { id: 12, img: Sumka1, title: language.shop12, cost: 36.00, cost1: 42.00, Imgs:[ Sumka1, sumka8, sumka7, sumka9 ] },
   ];
+
+
+  

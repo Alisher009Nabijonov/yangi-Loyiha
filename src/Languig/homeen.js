@@ -3,7 +3,7 @@ export default {
   welcome: "New Furniture CollectionTrends in 2020",
   changeLanguage:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscingin phasellus non in justo.",
-  btn: "Shop Now",
+  btn: "Shopping",
   Featured: "Featured Products",
   Leatest: "Leatest Products",
   link1: "New Arrival",
@@ -19,7 +19,7 @@ export default {
   kata3:
     "Reinforced with double wood dowels, glue, screw - nails cornerblocks and machine nails blocks and machine nails",
   kata4: "Arms, backs and seats are structurally reinforced",
-  kata5: "Shop Now",
+  kata5: "Shopping",
   kata6: "B&B Italian Sofa ",
   treding1: "Trending Products",
   treding2: "Discount Item",

@@ -9,7 +9,6 @@ import About2 from "../assets/35.png";
 import About3 from "../assets/36.png";
 import About4 from "../assets/37.png";
 import About5 from "../assets/38.png";
-import home_kata1 from "../assets/home_kata1.png";
 
 import salom1 from "../assets/salom1.png";
 import salom2 from "../assets/salom2.png";
@@ -25,8 +24,6 @@ import top4 from "../assets/top4.png";
 import late1 from "../assets/late.png";
 import late2 from "../assets/late2.png";
 import late3 from "../assets/late3.png";
-import rang1 from "../assets/rang1.png";
-import rang2 from "../assets/rang2.png";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -38,11 +35,14 @@ import { NavLink, Outlet } from "react-router-dom";
 export default function App({
   cards,
   headleAdd,
+  t1,
   t,
-  setLanguage,
   handleHeartClick,
   likedCards,
   handleSelectCard,
+  handleImageChange,
+  kataData,
+  handleSelectCard1,
 }) {
   // const [imgrang, setImgrang] = useState({home_kata1});
 
@@ -225,18 +225,6 @@ export default function App({
     );
   };
 
-  const [selectedImage, setSelectedImage] = useState(home_kata1);
-
-  const images = {
-    rangli1: home_kata1,
-    rangli2: rang1,
-    rangli3: rang2,
-  };
-
-  const handleImageChange = (key) => {
-    setSelectedImage(images[key]);
-  };
-
   return (
     <>
       <Swiper
@@ -254,7 +242,7 @@ export default function App({
               <h3>{t("greeting")}</h3>
               <h1>{t("welcome")}</h1>
               <p>{t("changeLanguage")}</p>
-              <NavLink to="shoping">
+              <NavLink to="shop">
                 <button>{t("btn")}</button>
               </NavLink>
             </div>
@@ -269,7 +257,7 @@ export default function App({
               <h3>{t("greeting")}</h3>
               <h1>{t("welcome")}</h1>
               <p>{t("changeLanguage")}</p>
-              <NavLink to="shoping">
+              <NavLink to="shop">
                 <button>{t("btn")}</button>
               </NavLink>
             </div>
@@ -284,7 +272,7 @@ export default function App({
               <h3>{t("greeting")}</h3>
               <h1>{t("welcome")}</h1>
               <p>{t("changeLanguage")}</p>
-              <NavLink to="shoping">
+              <NavLink to="shop">
                 <button>{t("btn")}</button>
               </NavLink>
             </div>
@@ -338,8 +326,8 @@ export default function App({
                     <div className="home_color3"></div>
                   </div>
                   <div className="card_cost">
-                    <p>${item.cost}.00</p>
-                    <del>${item.cost1}.00</del>
+                    <p>{t1("dolor1")}</p>
+                    <del>{t1("dolor2")}</del>
                   </div>
                 </div>
               ))}
@@ -378,8 +366,9 @@ export default function App({
                     <div className="home_color3"></div>
                   </div>
                   <div className="card_cost">
-                    <p>${item.cost}.00</p>
-                    <del>${item.cost1}.00</del>
+                    {/* <p>${item.cost}.00</p> */}
+                    <p>{t1("dolor1")}</p>
+                    <del>{t1("dolor2")}</del>
                   </div>
                 </div>
               ))}
@@ -425,8 +414,9 @@ export default function App({
                     <div className="home_color3"></div>
                   </div>
                   <div className="card_cost">
-                    <p>${item.cost}.00</p>
-                    <del>${item.cost1}.00</del>
+                    <p>{t1("dolor1")}</p>
+
+                    <del>{t1("dolor2")}</del>
                   </div>
                 </div>
               ))}
@@ -474,8 +464,9 @@ export default function App({
                 <h2>{item.title}</h2>
 
                 <div className="card_cost">
-                  <p>${item.cost}.00</p>
-                  <del>${item.cost1}.00</del>
+                  <p>{t1("dolor1")}</p>
+
+                  <del>{t1("dolor2")}</del>
                 </div>
               </div>
             </div>
@@ -513,8 +504,9 @@ export default function App({
                 <h2>{item.title}</h2>
 
                 <div className="card_cost">
-                  <p>${item.cost}.00</p>
-                  <del>${item.cost1}.00</del>
+                  <p>{t1("dolor1")}</p>
+
+                  <del>{t1("dolor2")}</del>
                 </div>
               </div>
             </div>
@@ -583,47 +575,35 @@ export default function App({
       </div> */}
 
       <div className="home_kata_page">
-        <div className="home_kata_page_main">
-          <div className="home_kata_page_left">
-            <img src={selectedImage} alt="Kata Preview" />
-          </div>
-          <div className="home_kata_page_right">
-            <h1>{t("kata1")}</h1>
-            <div
-              className="rang_text"
-              onClick={() => handleImageChange("rangli1")}
-              style={{ cursor: "pointer" }}
-            >
-              <div className="rangli2"></div>
-              <p>{t("kata2")}</p>
+        {kataData.map((item) => (
+          <div key={item.id} className="home_kata_page_main">
+            <div className="home_kata_page_left">
+              <img src={item.KataImg} alt={item.KataTitle} />
             </div>
-            <div
-              className="rang_text"
-              onClick={() => handleImageChange("rangli2")}
-              style={{ cursor: "pointer" }}
-            >
-              <div className="rangli1"></div>
-              <p>{t("kata3")}</p>
-            </div>
-            <div
-              className="rang_text"
-              onClick={() => handleImageChange("rangli3")}
-              style={{ cursor: "pointer" }}
-            >
-              <div className="rangli3"></div>
-              <p>{t("kata4")}</p>
-            </div>
-            <div className="btn_home_cost1">
-              <NavLink to="/shoping">
-                <button>{t("kata5")}</button>
-              </NavLink>
+            <div className="home_kata_page_right">
+              <h1>{item.KataTitle}</h1>
+              <div className="rang_text">
+                <div className="rangli1"></div>
+                <p>{item.KataP1}</p>
+              </div>
+              <div className="rang_text">
+                <div className="rangli2"></div>
+                <p>{item.KataP2}</p>
+              </div>
+              <div className="rang_text">
+                <div className="rangli3"></div>
+                <p>{item.KataP3}</p>
+              </div>
+              <div className="btn_home_cost1">
+                <button onClick={() => handleSelectCard1(item)}>{item.KataBtn}</button>
               <div>
-                <h3>{t("kata6")}</h3>
-                <p>$32.00</p>
+                <h3>{item.KataP4}</h3>
+                <p>{item.KataCost}</p>
               </div>
             </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
 
       <div className="treding_page">
@@ -659,8 +639,9 @@ export default function App({
               <h2 className="qaley">{item.title}</h2>
 
               <div className="card_cost123">
-                <p>${item.cost}.00</p>
-                <del>${item.cost1}.00</del>
+                <p>{t1("dolor1")}</p>
+
+                <del>{t1("dolor2")}</del>
               </div>
             </div>
           ))}

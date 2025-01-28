@@ -8,7 +8,7 @@ import { CgMenuGridO } from "react-icons/cg";
 
 import { cards } from "../Malumotlar";
 
-function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard }) {
+function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard, t1 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
   const [filter, setFilter] = useState("all");
@@ -125,8 +125,10 @@ function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard }) {
                   <div>
                     <h2>{item.title}</h2>
                     <div className="card_cost2">
-                      <p>${item.cost}.00</p>
-                      <del>${item.cost1}.00</del>
+                    <p>{t1("dolor1")}</p>
+
+                    <del>{t1("dolor2")}</del>
+
                     </div>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.

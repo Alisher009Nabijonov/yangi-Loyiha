@@ -3,8 +3,13 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 
-
-function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
+function Shoping({
+  shop: initialShop,
+  totalCost,
+  totalCost1,
+  t1,
+  selectedCards1,
+}) {
   const [shop, setShop] = useState(initialShop);
   const [caunter, setCaunter] = useState(() => initialShop.map(() => 1));
   const [promoCode, setPromoCode] = useState("");
@@ -15,6 +20,11 @@ function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
     setCaunter((prev) =>
       prev.map((count, i) => (i === index ? count + 1 : count))
     );
+
+    // Narxni yangilash
+    totalCost += parseInt(shop[index].cost);
+    const updatedTotals = totals + parseInt(shop[index].cost1);
+    setTotals(updatedTotals);
   };
 
   const decrement = (index) => {
@@ -30,6 +40,11 @@ function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
         return count;
       })
     );
+
+    // Narxni yangilash
+    totalCost -= parseInt(shop[index].cost);
+    const updatedTotals = totals - parseInt(shop[index].cost1);
+    setTotals(updatedTotals);
   };
 
   const removeItem = (index) => {
@@ -41,12 +56,11 @@ function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
     if (promoCode === "salom" && !discountApplied) {
       setTotals((prev) => prev - 12);
       setDiscountApplied(true);
-      toast.success('Siz chegirmaga ega boldingiz!')
+      toast.success("Siz chegirmaga ega boldingiz!");
     } else if (discountApplied) {
-    
-      toast.error("Kodni tekshiring yoki ikinchi marta foydalanmang!!!");
+      toast.error("Kodni tekshiring yoki ikkinchi marta foydalanmang!!!");
     } else {
-      toast.error("Kodni tekshiring yoki ikinchi marta foydalanmang!!!");
+      toast.error("Kodni tekshiring yoki ikkinchi marta foydalanmang!!!");
     }
   };
 
@@ -81,26 +95,43 @@ function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
                       </div>
                       <div className="shop_cost_caunter">
                         <div>
-                          <h3>${item.cost}.00</h3>
+                          <h3> {t1("dolor1")} </h3>
                         </div>
                         <div className="caunter">
-                          <button onClick={() => increment(index)}>+</button>
-                          <p>{caunter[index]}</p>
                           <button onClick={() => decrement(index)}>-</button>
+                          <p>{caunter[index]}</p>
+                          <button onClick={() => increment(index)}>+</button>
                         </div>
                         <div>
-                          <h3>${item.cost1}.00</h3>
+                          <del>{t1("dolor2")}</del>
                         </div>
                       </div>
                     </div>
                   </div>
                 ))}
-              <p>{}</p>
+                <p>{}</p>
               </div>
-
             ) : (
-              <h1>Hozircha Savat Bo'sh!!!</h1>
+              <h1></h1>
             )}
+
+            <div className="home_kata_page1">
+              {selectedCards1.map((item) => (
+                <div key={item.id} className="home_kata_page_main1">
+                  <div className="home_kata_page_left1">
+                    <img src={item.KataImg} alt={item.KataTitle} />
+                  </div>
+                  <div className="home_kata_page_right1">
+                    <h2>{item.KataTitle}</h2>
+
+                    <div>
+                      <h4>{item.KataP4}</h4>
+                      <p>{item.KataCost}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="cost_code">
             <div className="total_cost">
@@ -108,7 +139,7 @@ function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
               <div className="total_main">
                 <div className="total1">
                   <h2>Subtotals:</h2>
-                  <h2>${totalCost}.00</h2>
+                  <h2>${totals}.00</h2>
                 </div>
                 <div className="total1">
                   <h2>Totals:</h2>
@@ -148,8 +179,9 @@ function Shoping({ shop: initialShop, totalCost, totalCost1 }) {
             </div>
           </div>
         </div>
+
         <Outlet />
-        <Toaster/>
+        <Toaster />
       </div>
     </div>
   );

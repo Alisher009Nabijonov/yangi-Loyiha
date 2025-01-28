@@ -110,7 +110,7 @@ const Login = () => {
                 </button>
               </NavLink>
             </div>
-          </div>
+          </div> 
         </div>
         <div className="login_3">
           <div className="login_3_main">
@@ -119,12 +119,12 @@ const Login = () => {
         </div>
       </div>
       <Outlet />
-      <PhoneInput
+      {/* <PhoneInput
         country={"uz"}
         // value={this.state.phone}
         // onChange={(phone) => this.setState({ phone })}
       />
-      <Button variant="contained">Send Otp</Button>
+      <Button variant="contained">Send Otp</Button> */}
     </div>
   );
 };

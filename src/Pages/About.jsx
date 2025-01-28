@@ -1,29 +1,23 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import About1 from "../assets/34.png";
 import About2 from "../assets/35.png";
 import About3 from "../assets/36.png";
 import About4 from "../assets/37.png";
 import About5 from "../assets/38.png";
-
 import About6 from "../assets/39.png";
 import About7 from "../assets/40.png";
 import About8 from "../assets/41.png";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
 
+const About = ({ t }) => {
+  const [activeSlide, setActiveSlide] = useState(1);
 
-const About = ({ t, setLanguage }) => {
-
-  const pagination = {
-    clickable: true,
-    renderBullet: function (index, className) {
-      return '<span class="' + className + '">' + "</span>";
-    },
+  const handleSlideChange = (index) => {
+    setActiveSlide(index);
   };
 
   return (
@@ -44,7 +38,9 @@ const About = ({ t, setLanguage }) => {
           <div className="about_right">
             <h1>{t("about2")}</h1>
             <p>{t("about3")}</p>
-          <NavLink to='/cantactus'>  <button>{t("about4")}</button></NavLink>
+            <NavLink to="/cantactus">
+              <button>{t("about4")}</button>
+            </NavLink>
           </div>
         </div>
 
@@ -73,70 +69,64 @@ const About = ({ t, setLanguage }) => {
             </div>
           </div>
         </div>
-        <Swiper
-          pagination={pagination}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          modules={[Pagination, Autoplay]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <div className="about_carusel">
-              <h1>{t("about111")}!</h1>
-              <div className="carusel_img">
-                <img className="carusel_img_img1" src={About6} alt="" />
-                <img className="carusel_img_img2" src={About7} alt="" />
-                <img className="carusel_img_img3" src={About8} alt="" />
-              </div>
-              <h2>{t("about11")}</h2>
-              <p>{t("about12")}</p>
-              <p>{t("about13")}</p>
-              <div className="chiziqlar">
-                <div className="chiziq1"></div>
-                <div className="chiziq2"></div>
-                <div className="chiziq3"></div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="about_carusel">
-              <h1>{t("about111")}!</h1>
-              <div className="carusel_img">
-                <img className="carusel_img_img4" src={About6} alt="" />
-                <img className="carusel_img_img5" src={About7} alt="" />
-                <img className="carusel_img_img6" src={About8} alt="" />
-              </div>
-              <h2>{t("about11")}</h2>
-              <p>{t("about12")}</p>
-              <p>{t("about13")}</p>
-              <div className="chiziqlar">
-                <div className="chiziq4"></div>
-                <div className="chiziq5"></div>
-                <div className="chiziq6"></div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="about_carusel">
-              <h1>{t("about111")}!</h1>
-              <div className="carusel_img">
-                <img className="carusel_img_img7" src={About6} alt="" />
-                <img className="carusel_img_img8" src={About7} alt="" />
-                <img className="carusel_img_img9" src={About8} alt="" />
-              </div>
-              <h2>{t("about11")}</h2>
-              <p>{t("about12")}</p>
-              <p>{t("about13")}</p>
-              <div className="chiziqlar">
-                <div className="chiziq7"></div>
-                <div className="chiziq8"></div>
-                <div className="chiziq9"></div>
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+
+        <div className="about_carusel">
+          <h1>{t("about111")}!</h1>
+          <div className="carusel_img">
+            <img
+              onClick={() => handleSlideChange(0)}
+              className={`carusel_img_img1 ${
+                activeSlide === 0 ? "active" : "inactive"
+              }`}
+              src={About6}
+              alt=""
+            />
+            <img
+              onClick={() => handleSlideChange(1)}
+              className={`carusel_img_img2 ${
+                activeSlide === 1 ? "active" : "inactive"
+              }`}
+              src={About7}
+              alt=""
+            />
+            <img
+              onClick={() => handleSlideChange(2)}
+              className={`carusel_img_img3 ${
+                activeSlide === 2 ? "active" : "inactive"
+              }`}
+              src={About8}
+              alt=""
+            />
+          </div>
+          <h2>
+            {activeSlide === 0
+              ? t("about12")
+              : activeSlide === 1
+              ? t("about11")
+              : t("about12")}
+          </h2>
+          <p>
+            {activeSlide === 0
+              ? t("about13")
+              : activeSlide === 1
+              ? t("about13")
+              : t("about13")}
+          </p>
+          <div className="chiziqlar">
+            <div
+              className={`chiziq ${activeSlide === 0 ? "active" : ""}`}
+              onClick={() => handleSlideChange(0)}
+            ></div>
+            <div
+              className={`chiziq ${activeSlide === 1 ? "active" : ""}`}
+              onClick={() => handleSlideChange(1)}
+            ></div>
+            <div
+              className={`chiziq ${activeSlide === 2 ? "active" : ""}`}
+              onClick={() => handleSlideChange(2)}
+            ></div>
+          </div>
+        </div>
 
         <Outlet />
       </div>

@@ -3,7 +3,7 @@ export default {
   welcome: "Yangi mebel kolleksiyasi 2020 yilgi trendlar",
   changeLanguage:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscingin phasellus in justo.",
-  btn: "Hozir xarid qiling",
+  btn: "Harid qilish",
   Featured: "Tanlangan mahsulotlar",
   Leatest: "Eng so'nggi mahsulotlar",
   link1: "Yangi kelgan",
@@ -19,7 +19,7 @@ export default {
   kata3:
     "Ikkita yog'och dübeller, elim, vint - mixlar burchak bloklari va mashina mixlari bloklari va mashina mixlari bilan mustahkamlangan",
   kata4: "Qo'llar, orqa va o'rindiqlar tizimli ravishda mustahkamlangan",
-  kata5: "Hozir xarid qiling",
+  kata5: "Harid qilish",
   kata6: "B&B italyancha divan",
   treding1: "Trenddagi mahsulotlar",
   treding2: "Chegirmali element",
