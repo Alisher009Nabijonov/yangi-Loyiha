@@ -277,7 +277,7 @@ export default function App({
               </NavLink>
             </div>
             <div className="banner_right">
-              {/* <img src={HomeImg1} alt="HOMEIMG1" /> */}
+              <img src={HomeImg1} alt="HOMEIMG1" />
             </div>
           </div>
         </SwiperSlide>
@@ -319,7 +319,7 @@ export default function App({
                       </NavLink>
                     </div>
                   </div>
-                  <h2>{item.title}</h2>
+                  <h2 className="home_active_shop_page_color">{item.title}</h2>
                   <div className="home_color">
                     <div className="home_color1"></div>
                     <div className="home_color2"></div>
@@ -359,7 +359,7 @@ export default function App({
                       </NavLink>
                     </div>
                   </div>
-                  <h2>{item.title}</h2>
+                  <h2 className="home_active_shop_page_color">{item.title}</h2>
                   <div className="home_color">
                     <div className="home_color1"></div>
                     <div className="home_color2"></div>
@@ -407,7 +407,7 @@ export default function App({
                     </div>
                   </div>
 
-                  <h2>{item.title}</h2>
+                  <h2 className="home_active_shop_page_color">{item.title}</h2>
                   <div className="home_color">
                     <div className="home_color1"></div>
                     <div className="home_color2"></div>
@@ -575,32 +575,42 @@ export default function App({
       </div> */}
 
       <div className="home_kata_page">
-        {kataData.map((item) => (
+        {cards.slice(12).map((item) => (
           <div key={item.id} className="home_kata_page_main">
             <div className="home_kata_page_left">
-              <img src={item.KataImg} alt={item.KataTitle} />
+              <img src={item.img} alt={item.title} />
             </div>
             <div className="home_kata_page_right">
-              <h1>{item.KataTitle}</h1>
-              <div className="rang_text">
+              <h1>{item.title}</h1>
+              <div
+                className="rang_text"
+                onClick={() => handleImageChange("rangli1")}
+              >
                 <div className="rangli1"></div>
                 <p>{item.KataP1}</p>
               </div>
-              <div className="rang_text">
+              <div
+                className="rang_text"
+                onClick={() => handleImageChange("rangli2")}
+              >
                 <div className="rangli2"></div>
                 <p>{item.KataP2}</p>
               </div>
-              <div className="rang_text">
+              <div
+                className="rang_text"
+                onClick={() => handleImageChange("rangli3")}
+              >
                 <div className="rangli3"></div>
                 <p>{item.KataP3}</p>
               </div>
               <div className="btn_home_cost1">
-                <button onClick={() => handleSelectCard1(item)}>{item.KataBtn}</button>
-              <div>
-                <h3>{item.KataP4}</h3>
-                <p>{item.KataCost}</p>
+                <button onClick={() => headleAdd(item)}>{item.KataBtn}</button>
+                <div>
+                    <h3>{item.KataP4}</h3>
+                    <p>{t1("dolor1")}</p>
+                    <del>{t1("dolor2")}</del>
+                </div>
               </div>
-            </div>
             </div>
           </div>
         ))}

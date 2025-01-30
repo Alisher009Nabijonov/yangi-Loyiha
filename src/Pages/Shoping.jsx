@@ -115,7 +115,7 @@ function Shoping({
               <h1></h1>
             )}
 
-            <div className="home_kata_page1">
+            {/* <div className="home_kata_page1">
               {selectedCards1.map((item) => (
                 <div key={item.id} className="home_kata_page_main1">
                   <div className="home_kata_page_left1">
@@ -131,7 +131,7 @@ function Shoping({
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
           <div className="cost_code">
             <div className="total_cost">
@@ -141,6 +141,17 @@ function Shoping({
                   <h2>Subtotals:</h2>
                   <h2>${totals}.00</h2>
                 </div>
+                <div className="promo_code">
+                <input
+                  type="text"
+                  placeholder="Code..."
+                  value={promoCode}
+                  onChange={(e) => setPromoCode(e.target.value)}
+                />
+              </div>
+              <button className="promo_btn2" onClick={handlePromoCode}>
+                  Check
+                </button>
                 <div className="total1">
                   <h2>Totals:</h2>
                   <h2>${totals}.00</h2>
@@ -161,22 +172,15 @@ function Shoping({
                 </div>
               </div>
             </div>
-            <div className="promo">
+            {/* <div className="promo">
               <h1>Promo Code</h1>
-              <div className="promo_code">
-                <input
-                  type="text"
-                  placeholder="Code..."
-                  value={promoCode}
-                  onChange={(e) => setPromoCode(e.target.value)}
-                />
-              </div>
+             
               <div className="promo_btn1">
                 <button className="promo_btn" onClick={handlePromoCode}>
                   Check the code
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

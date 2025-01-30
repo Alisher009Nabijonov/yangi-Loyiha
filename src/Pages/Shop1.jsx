@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBarsProgress } from "react-icons/fa6";
-import { AiOutlineBars } from "react-icons/ai";
 import { FaShoppingCart, FaHeart, FaSearchPlus } from "react-icons/fa";
-import Ohir1 from "../assets/15.png";
+import { AiOutlineBars } from "react-icons/ai";
 import { CgMenuGridO } from "react-icons/cg";
-
+import Ohir1 from "../assets/15.png";
 import { cards } from "../Malumotlar";
 
 function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard, t1 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
   const [filter, setFilter] = useState("all");
-
- 
+  const [cardsPerPage, setCardsPerPage] = useState(12); // State for controlling the number of cards per page
 
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
@@ -23,6 +20,13 @@ function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard, t1 }
   const handleSearch1 = (event) => {
     const term1 = event.target.value;
     setSearchTerm1(term1);
+  };
+
+  const handleCardsPerPageChange = (event) => {
+    const value = parseInt(event.target.value, 10);
+    if (!isNaN(value) && value > 0) {
+      setCardsPerPage(value); // Update number of cards per page
+    }
   };
 
   const getFilteredCards = () => {
@@ -67,11 +71,11 @@ function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard, t1 }
                 <p>
                   Per Page:
                   <input
-                    type="search"
-                    value={searchTerm1}
-                    onChange={handleSearch1}
-                    placeholder="Search
-                 ID"
+                    type="number"
+                    value={cardsPerPage}
+                    onChange={handleCardsPerPageChange}
+                    placeholder="Enter number of cards"
+                    min="1"
                   />
                 </p>
               </div>
@@ -98,7 +102,6 @@ function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard, t1 }
                   <AiOutlineBars />
                 </NavLink>
               </div>
-              
               <input
                 type="search"
                 placeholder="Search..."
@@ -117,18 +120,15 @@ function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard, t1 }
               <h1>Siz qidirgan malumot yo'q!!!</h1>
             </div>
           ) : (
-            filteredCards.map((item) => (
+            filteredCards.slice(0, cardsPerPage).map((item) => (
               <div key={item.id} className="shop_card_main1">
                 <img src={item.img} alt="" className="cardDivImg1" />
-
                 <div className="card_cost1">
                   <div>
                     <h2>{item.title}</h2>
                     <div className="card_cost2">
-                    <p>{t1("dolor1")}</p>
-
-                    <del>{t1("dolor2")}</del>
-
+                      <p>{t1("dolor1")}</p>
+                      <del>{t1("dolor2")}</del>
                     </div>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -147,7 +147,7 @@ function Shop1({ headleAdd, likedCards, handleHeartClick, handleSelectCard, t1 }
                           transition: "color 0.3s ease-in-out",
                         }}
                       >
-                        <FaHeart  onClick={() => handleSelectCard(item)}/>
+                        <FaHeart onClick={() => handleSelectCard(item)} />
                       </div>
                       <div>
                         <NavLink to="/informations">

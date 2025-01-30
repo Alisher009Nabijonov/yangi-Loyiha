@@ -37,27 +37,40 @@
   import kamera19 from './assets/kamera1.jpg'
   import kamera20 from './assets/kamera2.jpg'
   import kamera21 from './assets/kamera3.jpg'
+  import home_kata1 from "./assets/home_kata1.png";
+
   import en from './Languig/homeen'
   import uz from './Languig/homeuz'
   import ru from './Languig/homeru'
   
-  // Here, you can choose which language to use (en, uz, or ru)
   const language = en; // Change this to `uz` or `ru` based on the selected language
   
 
   export const cards = [
-    { id: 1, img: Kreslo1, title: language.shop1, cost: 20.00, cost1: 42.00, Imgs:[ Kreslo1, Stol1, Stol2, Stol3] },
-    { id: 2, img: Kreslo2, title: language.shop2, cost: 26.00, cost1: 42.00, Imgs:[ Kreslo2, stol6, stol5, stol4 ] },
-    { id: 3, img: Kreslo3, title: language.shop3, cost: 16.00, cost1: 42.00, Imgs:[ Kreslo3, Stol3, Stol2,Stol1 ] },
-    { id: 4, img: Sumka1, title: language.shop4, cost: 22.00, cost1: 42.00, Imgs:[ Sumka1, sumka7, sumka8, sumka9 ] },
-    { id: 5, img: Soat1, title: language.shop5, cost: 26.00, cost1: 42.00, Imgs:[ Soat1, soat10, soat11, soat12 ] },
-    { id: 6, img: Soat2, title: language.shop6, cost: 24.00, cost1: 42.00, Imgs:[ Soat2, soat13, soat14, soat15 ] },
-    { id: 7, img: Quloqchin1, title: language.shop7, cost: 36.00, cost1: 42.00, Imgs:[ Quloqchin1, quloqchin16, quloqchin17, quloqchin18 ] },
-    { id: 8, img: Kreslo4, title: language.shop8, cost: 46.00, cost1: 42.00, Imgs:[ Kreslo4, stol6, stol5, stol4 ] },
-    { id: 9, img: Soat3, title: language.shop9, cost: 30.00, cost1: 42.00, Imgs:[ Soat3, soat10, soat11, soat12 ] },
-    { id: 10, img: Kamera1, title: language.shop10, cost: 34.00, cost1: 42.00, Imgs:[ Kamera1, kamera19, kamera20, kamera21 ] },
-    { id: 11, img: Quloqchin2, title: language.shop11, cost: 56.00, cost1: 42.00, Imgs:[ Quloqchin2, quloqchin17, quloqchin16, quloqchin18 ] },
-    { id: 12, img: Sumka1, title: language.shop12, cost: 36.00, cost1: 42.00, Imgs:[ Sumka1, sumka8, sumka7, sumka9 ] },
+    { id: 1, img: Kreslo1, title: language.shop1, cost: 22.00, cost1: 22.00, Imgs:[ Kreslo1, Stol1, Stol2, Stol3] },
+    { id: 2, img: Kreslo2, title: language.shop2, cost: 22.00, cost1: 22.00, Imgs:[ Kreslo2, stol6, stol5, stol4 ] },
+    { id: 3, img: Kreslo3, title: language.shop3, cost: 22.00, cost1: 22.00, Imgs:[ Kreslo3, Stol3, Stol2,Stol1 ] },
+    { id: 4, img: Sumka1, title: language.shop4, cost: 22.00, cost1: 22.00, Imgs:[ Sumka1, sumka7, sumka8, sumka9 ] },
+    { id: 5, img: Soat1, title: language.shop5, cost: 22.00, cost1: 22.00, Imgs:[ Soat1, soat10, soat11, soat12 ] },
+    { id: 6, img: Soat2, title: language.shop6, cost: 22.00, cost1: 22.00, Imgs:[ Soat2, soat13, soat14, soat15 ] },
+    { id: 7, img: Quloqchin1, title: language.shop7, cost: 22.00, cost1: 22.00, Imgs:[ Quloqchin1, quloqchin16, quloqchin17, quloqchin18 ] },
+    { id: 8, img: Kreslo4, title: language.shop8, cost: 22.00, cost1: 22.00, Imgs:[ Kreslo4, stol6, stol5, stol4 ] },
+    { id: 9, img: Soat3, title: language.shop9, cost: 22.00, cost1: 22.00, Imgs:[ Soat3, soat10, soat11, soat12 ] },
+    { id: 10, img: Kamera1, title: language.shop10, cost: 22.00, cost1: 22.00, Imgs:[ Kamera1, kamera19, kamera20, kamera21 ] },
+    { id: 11, img: Quloqchin2, title: language.shop11, cost: 22.00, cost1: 22.00, Imgs:[ Quloqchin2, quloqchin17, quloqchin16, quloqchin18 ] },
+    { id: 12, img: Sumka1, title: language.shop12, cost: 22.00, cost1: 22.00, Imgs:[ Sumka1, sumka8, sumka7, sumka9 ] },
+    {
+      id: 13,
+      img: home_kata1, 
+      title: "Unique Features Of leatest &Trending Poducts",
+      KataP1: "All frames constructed with hardwood solids and laminates",
+      KataP2: "Reinforced with double wood dowels, glue, screw - nails corner blocks and machine nails",
+      KataP3: "Arms, backs and seats are structurally reinforced",
+      KataBtn: "Add To Cart",
+      KataP4: "B&B Italian Sofa ",
+      cost: 22.00,
+      cost1: 22.00
+    }
   ];
 
 

@@ -47,9 +47,7 @@ import dolor from "./Valyuta/Dolor";
 import som from "./Valyuta/Som";
 import ColorItem from './Pages/color-item'
 const languages1 = { dolor, som };
-import rang1 from "./assets/rang1.png";
-import rang2 from "./assets/rang2.png";
-import home_kata1 from "./assets/home_kata1.png";
+
 
 
 const languages = { en, uz, ru };
@@ -112,6 +110,7 @@ function App() {
   };
   let totalCost = shop.reduce((item, index) => item + parseInt(index.cost), 0);
 
+
   let totalCost1 = shop.reduce(
     (item, index) => item + parseInt(index.cost1),
     0
@@ -152,62 +151,44 @@ function App() {
 
 
 
-  const [selectedCards1, setSelectedCards1] = useState([]);
-
-  const handleSelectCard1= (item) => {
-    setSelectedCards1([...selectedCards1, item]);
-    toast.success("Mahsulot sevatchaga qoshildi");
-  };
-
-
-  const [selectedImage, setSelectedImage] = useState(home_kata1);
-
-  const images = {
-    rangli1: home_kata1,
-    rangli2: rang1,
-    rangli3: rang2,
-  };
-
-  const handleImageChange = (key) => {
-    setSelectedImage(images[key]);
-  };
-
-
-  // const kataData = {
-  //   leftImage: {
-  //     src: selectedImage,
-  //     alt: "Kata Preview",
-  //   },
-  //   rightContent: {
-  //     title: t("kata1"),
-  //     options: [
-  //       { id: "rangli1", className: "rangli2", text: t("kata2") },
-  //       { id: "rangli2", className: "rangli1", text: t("kata3") },
-  //       { id: "rangli3", className: "rangli3", text: t("kata4") },
-  //     ],
-  //     button: {
-  //       text: t("kata5"),
-  //       link: "/shop",
-  //     },
-  //     cost: {
-  //       title: t("kata6"),
-  //       price: "$32.00",
-  //     },
-  //   },
+  // const [selectedCards1, setSelectedCards1] = useState([]);
+  // const handleSelectCard1 = (item) => {
+  //   setSelectedCards1([...selectedCards1, item]);
+  //   setShop((prevShop) => [
+  //     ...prevShop,
+  //     { ...item, cost: parseFloat(item.KataCost.replace("$", "")) },
+  //   ]);
+  //   toast.success("Mahsulot savatchaga qo'shildi");
   // };
-  const kataData = [
-    {
-      id: 1,
-      KataImg: selectedImage, 
-      KataTitle: "Unique Features Of leatest &Trending Poducts",
-      KataP1: "All frames constructed with hardwood solids and laminates",
-      KataP2: "Reinforced with double wood dowels, glue, screw - nails corner blocks and machine nails",
-      KataP3: "Arms, backs and seats are structurally reinforced",
-      KataBtn: "Add To Cart",
-      KataP4: "B&B Italian Sofa ",
-      KataCost: "$32.00",
-    }
-  ]
+  
+
+  // const [selectedImage, setSelectedImage] = useState(home_kata1);
+
+  // const images = {
+  //   rangli1: home_kata1,
+  //   rangli2: rang1,
+  //   rangli3: rang2,
+  // };
+
+  // const handleImageChange = (key) => {
+  //   setSelectedImage(images[key]);
+  // };
+
+
+
+  // const kataData = [
+  //   {
+  //     id: 13,
+  //     KataImg: selectedImage, 
+  //     KataTitle: "Unique Features Of leatest &Trending Poducts",
+  //     KataP1: "All frames constructed with hardwood solids and laminates",
+  //     KataP2: "Reinforced with double wood dowels, glue, screw - nails corner blocks and machine nails",
+  //     KataP3: "Arms, backs and seats are structurally reinforced",
+  //     KataBtn: "Add To Cart",
+  //     KataP4: "B&B Italian Sofa ",
+  //     KataCost: "$32.00",
+  //   }
+  // ]
 
   
   const routes = createBrowserRouter(
@@ -227,7 +208,7 @@ function App() {
             filteredCards={filteredCards}
             searchQuery={searchQuery}
             selectedCards={selectedCards}
-            selectedCards1={selectedCards1}
+            // selectedCards1={selectedCards1}
             
             />
           }
@@ -244,9 +225,10 @@ function App() {
             handleHeartClick={handleHeartClick}
             likedCards={likedCards}
             handleSelectCard={handleSelectCard}
-            handleImageChange={handleImageChange}
-            kataData={kataData}
-            handleSelectCard1={handleSelectCard1}
+            // handleImageChange={handleImageChange}
+            // kataData={kataData}
+            // handleSelectCard1={handleSelectCard1}
+            // setSelectedImage={setSelectedImage}
             />
           }
         >
@@ -288,10 +270,10 @@ function App() {
               totalCost1={totalCost1}
               t1={t1}
               RemoveItem={RemoveItem}
-              selectedCards1={selectedCards1}
+              // selectedCards1={selectedCards1}
 
 
-            />
+              />
           }
         />
         <Route

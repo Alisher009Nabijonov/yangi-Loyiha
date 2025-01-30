@@ -26,7 +26,11 @@ function RootLayout({
   selectedCards1,
 }) {
   const [footerEmail, setFooterEmail] = useState("");
+
   const navigate = useNavigate();
+
+
+
 
   const handleSignUpRedirect = () => {
     if (!footerEmail.trim()) {

@@ -101,11 +101,15 @@ const Login = () => {
                 onChange={handleInputChange}
                 required
               />
+              <div className="google_login_btn12">
               <button type="submit">Login</button>
+              </div>
             </form>
-            <button onClick={handleGoogleLogin} className="google_login_btn">
+           <div className="google_login_btn12">
+           <button onClick={handleGoogleLogin} className="google_login_btn">
               Google
             </button>
+           </div>
             <div className="login_btns">
               <NavLink to="/signup">
               <div className="aliklar">

@@ -6,17 +6,23 @@ import { FaBarsProgress } from "react-icons/fa6";
 import { CgMenuGridO } from "react-icons/cg";
 import Ohir1 from "../assets/15.png";
 
-function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard, t1  }) {
+function Shop({
+  cards,
+  headleAdd,
+  handleHeartClick,
+  likedCards,
+  handleSelectCard,
+  t1,
+}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
-
   const [filter, setFilter] = useState("all");
+  const [cardsPerPage, setCardsPerPage] = useState(12);   
 
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
     setSearchTerm(term);
   };
-
 
   const handleSearch1 = (event) => {
     const term1 = event.target.value;
@@ -44,6 +50,14 @@ function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard
 
   const filteredCards = getFilteredCards();
 
+  // Function to handle per page change
+  const handleCardsPerPageChange = (event) => {
+    const value = parseInt(event.target.value, 10);
+    if (!isNaN(value) && value > 0) {
+      setCardsPerPage(value);
+    }
+  };
+
   return (
     <div className="shop">
       <div className="shop_main">
@@ -65,11 +79,11 @@ function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard
                 <p>
                   Per Page:
                   <input
-                    type="search"
-                    value={searchTerm1}
-                    onChange={handleSearch1}
-                    placeholder="Search
-                 ID"
+                    type="number"
+                    value={cardsPerPage}
+                    onChange={handleCardsPerPageChange}
+                    placeholder="Enter number of cards"
+                    min="1"
                   />
                 </p>
               </div>
@@ -96,7 +110,7 @@ function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard
                   <AiOutlineBars />
                 </NavLink>
               </div>
-              
+
               <input
                 type="search"
                 placeholder="Search..."
@@ -115,7 +129,7 @@ function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard
               <h1>No results found for your search!</h1>
             </div>
           ) : (
-            filteredCards.map((item) => (
+            filteredCards.slice(0, cardsPerPage).map((item) => (
               <div key={item.id} className="shop_card_main">
                 <img src={item.img} alt={item.title} className="cardDivImg" />
                 <div className="shop_icon">
@@ -131,7 +145,7 @@ function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard
                       transition: "color 0.3s ease-in-out",
                     }}
                   >
-                    <FaHeart  onClick={() => handleSelectCard(item)}/>
+                    <FaHeart onClick={() => handleSelectCard(item)} />
                   </div>
                   <div>
                     <NavLink to={`/informations/${item.id}`}>
@@ -141,10 +155,8 @@ function Shop({ cards, headleAdd, handleHeartClick, likedCards, handleSelectCard
                 </div>
                 <h2>{item.title}</h2>
                 <div className="card_cost">
-                <p>{t1("dolor1")}</p>
-
-                <del>{t1("dolor2")}</del>
-
+                  <p>{t1("dolor1")}</p>
+                  <del>{t1("dolor2")}</del>
                 </div>
               </div>
             ))

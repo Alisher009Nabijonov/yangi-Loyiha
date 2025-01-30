@@ -4,10 +4,11 @@
   /* box-sizing: border-box; */
 }
 :root{
-  --bg-color: #fff;
+  --bg-color: #7E33E0;
+ 
 }
 body{
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
 }
 
 .color-switcher{
@@ -70,7 +71,7 @@ body{
 .navbar {
   padding: 8px 0;
   width: 100%;
-  background: #7e33e0;
+  background: var(--bg-color);
   color: white;
   font-family: Josefin Sans;
   font-size: 16px;
@@ -161,8 +162,10 @@ header {
   padding: 9px 15px;
   border: none;
   border-radius: 4px;
-  background: #fb2e86;
-  color: white;
+  /* background: #fb2e86; */
+  background-color: var(--bg-color);
+
+  color: black;
 }
 
 /* BANNER */
@@ -186,7 +189,9 @@ header {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: #fb2e86;
+  /* color: #fb2e86; */
+  color: var(--bg-color);
+
 }
 
 .banner_center h1 {
@@ -215,8 +220,9 @@ header {
   padding: 8px 10px;
   font-size: 16px;
   border: none;
-  background: #fb2e86;
-  color: white;
+  /* background: #fb2e86; */
+  background-color: var(--bg-color);
+  color: black;
   border-radius: 4px;
 }
 
@@ -266,7 +272,8 @@ header {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: #fb2e86;
+  /* color: #fb2e86; */
+  color: var(--bg-color);
 }
 
 .glavniy_main {
@@ -381,7 +388,8 @@ header {
   text-decoration-line: line-through;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: #fb2e86;
+  /* color: #fb2e86; */
+  color: var(--bg-color);
 }
 
 /* Footer */
@@ -431,9 +439,13 @@ footer {
 .footer1 button {
   padding: 8px 15px;
   border: none;
-  background: #fb2e86;
+  /* background: #fb2e86; */
+  background-color: var(--bg-color);
   color: white;
   margin: 20px 0;
+}
+.home_active_shop_page_color{
+  color: var(--bg-color);
 }
 
 .footer1 p {
@@ -767,7 +779,7 @@ footer {
 }
 
 .faq_form button {
-  background-color: #ff69b4;
+  background-color: var(--bg-color);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -859,9 +871,9 @@ footer {
 .total_btn {
   width: 100%;
   padding: 10px;
-  background: #19d16f;
+  background: var(--bg-color);
   border: none;
-  color: white;
+  color: black;
   border-radius: 4px;
 }
 .total3 {
@@ -912,8 +924,8 @@ footer {
   padding: 6px;
 }
 .catigoriy_pas_p {
-  width: 100px;
-  background: #f939bf;
+  width: 85%;
+  background-color: var(--bg-color);
   color: white;
   padding: 12px;
   border-radius: 4px;
@@ -1037,7 +1049,7 @@ footer {
   font-size: 1rem;
   font-weight: 500;
   color: white;
-  background-color: #ff1f8e;
+  background-color: var(--bg-color);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -1224,7 +1236,7 @@ footer {
 }
 
 .dumoloqlar1 div:nth-child(2) {
-  background-color: #ff00ff;
+  background-color: var(--bg-color);
 }
 
 .dumoloqlar1 div:nth-child(3) {
@@ -1271,7 +1283,7 @@ footer {
 }
 
 .rang2 {
-  background-color: #ff69b4;
+  background-color: var(--bg-color);
 }
 
 .rang3 {
@@ -1379,6 +1391,7 @@ button {
 
 .get_btn {
   width: 100px;
+  background-color: var(--bg-color);
 }
 .shop_card_main1 {
   display: flex;
@@ -1421,9 +1434,12 @@ button {
   gap: 20px;
 }
 .login1_pas p {
-  color: #fb2e86;
+  color: var(--bg-color);
 }
-
+.signup_btn1{
+  background-color: var(--bg-color);
+  color: black;
+}
 .login_cards {
   font-family: Josefin Sans;
   display: flex;
@@ -1471,8 +1487,8 @@ button {
 .login_card button {
   width: 100%;
   padding: 12px;
-  background-color: #ff3f6c;
-  color: white;
+  background-color: var(--bg-color);
+  color: black;
   border: none;
   border-radius: 4px;
   font-size: 16px;
@@ -1481,10 +1497,7 @@ button {
   transition: all 0.4s;
 }
 
-.login_card button:hover {
-  background-color: #ff2957;
-  box-shadow: 0px 0px 10px #ff2957;
-}
+
 
 @media screen and (max-width: 1200px) {
   .login_card {
@@ -2498,7 +2511,7 @@ button {
   transition: all 0.4s;
 }
 .catigoriy2 p:hover {
-  background: #f939bf;
+  background-color: var(--bg-color);
   color: white;
   padding: 10px 6px;
   border-radius: 4px;
@@ -2507,7 +2520,7 @@ button {
   transition: all 0.4s;
 }
 .catigoriy3 p:hover {
-  background: #f939bf;
+  background-color: var(--bg-color);
   color: white;
   padding: 10px 6px;
   border-radius: 4px;
@@ -2528,13 +2541,11 @@ button {
   gap: 10px;
 }
 .login_btns button {
-  background-color: #ff3f6c;
+  background-color: var(--bg-color);
   transition: all 0.4s;
+  color: black;
 }
-.login_btns button:hover {
-  background-color: #ff2957;
-  box-shadow: 0px 0px 10px #ff2957;
-}
+
 .home_cards_shop11112 {
   display: flex;
   align-items: center;
@@ -2631,19 +2642,18 @@ button {
 }
 
 .btn_home_cost1 button {
-  padding: 16px 32px;
-  background: #fb2e86;
+  padding: 12px 22px;
+  /* background: #fb2e86; */
+  background-color: var(--bg-color);
   border: none;
   border-radius: 4px;
   color: white;
   font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition:  0.3s ease;
 }
 
-.btn_home_cost1 button:hover {
-  background: #e01b73;
-}
+
 
 .btn_home_cost1 div {
   display: flex;
@@ -2790,7 +2800,8 @@ button {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: #fb2e86;
+  /* color: #fb2e86; */
+  color: var(--bg-color);
 }
 .home12_leftt p {
   font-family: Lato;
@@ -2816,7 +2827,8 @@ button {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: #ffffff;
+  color: black;
+  background-color: var(--bg-color);
   padding: 10px 24px;
   margin: 30px 0;
 }
@@ -2926,6 +2938,10 @@ button {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.google_login_btn12 button{
+  background-color: var(--bg-color);
+  color: black;
+}
 .homeget_main {
   width: 80%;
   margin: 0 auto;
@@ -2952,6 +2968,8 @@ button {
 
 .homeget_main button {
   padding: 14px 32px;
+  color: black;
+  background-color: var(--bg-color);
 }
 
 .leatest1_h1 {
@@ -3204,7 +3222,7 @@ button {
   border-radius: 50%;
 }
 
-.btn_home_cost1 button {
+/* .btn_home_cost1 button {
   background-color: #ff6600;
   color: white;
   padding: 10px 20px;
@@ -3216,7 +3234,7 @@ button {
 
 .btn_home_cost1 button:hover {
   background-color: #cc5200;
-}
+} */
 .dropdown_ich {
   display: flex;
   align-items: start;
@@ -3673,18 +3691,16 @@ input[type="color"] {
 }
 
 .wishlist_deleteBtn {
-  background-color: #ff4d4d;
-  color: white;
+  background-color: var(--bg-color);
+  color: black;
   border: none;
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: all 0.2s ;
 }
 
-.wishlist_deleteBtn:hover {
-  background-color: #ff3333;
-}
+
 .carusel_img_img2 {
   height: 50px;
   border-radius: 4px;
@@ -4163,8 +4179,8 @@ input[type="color"] {
   width: 100%;
   padding: 10px 0;
   text-align: center;
-  background-color: #00c853;
-  color: #fff;
+  background-color: var(--bg-color);
+  color: black;
   font-size: 14px;
   font-weight: 600;
   border: none;
@@ -4205,7 +4221,11 @@ input[type="color"] {
   text-align: start;
   padding: 30px 21px;
 }
-
+.promo_btn2{
+  width: 100px;
+  background-color: var(--bg-color);
+  color: black;
+}
 .salom {
   display: flex;
   flex-direction: column;
@@ -4343,18 +4363,6 @@ input[type="color"] {
 .caunter_shoping_length {
   width: 30px;
   height: 30px;
-  background: #7e33e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  border-radius: 50%;
-  font-size: 20px;
-}
-.caunter_wishlist {
-  width: 30px;
-  height: 30px;
-  background: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4362,7 +4370,20 @@ input[type="color"] {
   border-radius: 50%;
   font-size: 20px;
 }
-
+.caunter_wishlist {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+}
+.davlat1{
+  padding: 8px 10px;
+  border: 2px solid black;
+  border-radius: 4px;
+}
 .carusel_img img {
   width: 50px;
   opacity: 0.5;
@@ -4430,7 +4451,7 @@ input[type="color"] {
 }
 
 .blog-meta span:first-child {
-  color: #fb2e86;
+  color: var(--bg-color);
 }
 
 .blog-content h3 {
@@ -4446,7 +4467,7 @@ input[type="color"] {
 }
 
 .blog-content a {
-  color: #fb2e86;
+  color: var(--bg-color);
   text-decoration: none;
   font-weight: 600;
 }
@@ -4463,7 +4484,7 @@ input[type="color"] {
 .pagination-controls button {
   padding: 8px 16px;
   border: none;
-  background: #fb2e86;
+  background: var(--bg-color);
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -4507,7 +4528,6 @@ input[type="color"] {
 
 .catigoriy2 p,
 .catigoriy3 p {
-  color: #72718f;
   margin: 10px 0;
   cursor: pointer;
 }
@@ -4566,7 +4586,7 @@ input[type="color"] {
 }
 
 .ofer_caard1 p {
-  color: #fb2e86;
+  color: var(--bg-color);
 }
 
 /* Social Media */
@@ -4681,4 +4701,7 @@ input[type="color"] {
 .home_kata_page_left1 img{
   width: 70%;
   height: 100%;
+}
+.per_page p input{
+  width: 70px;
 }
